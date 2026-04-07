@@ -14,20 +14,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js" defer></script>
     <style>
         :root {
             --green: #5B8A6F;
-            --green-soft: #6D9A80;
             --green-light: #EDF5F0;
-            --green-glow: rgba(91,138,111,0.10);
             --warm: #F8F4EF;
-            --warm-mid: #F2EDE6;
-            --warm-dark: #E8E2DA;
+            --warm-mid: #F0EBE5;
             --text: #2A2A2A;
             --text-soft: #5C5C5C;
             --text-muted: #9A9A9A;
             --white: #FFFFFF;
-            --shadow-sm: 0 1px 4px rgba(0,0,0,0.03);
             --shadow: 0 2px 12px rgba(0,0,0,0.05);
             --shadow-lg: 0 8px 32px rgba(0,0,0,0.06);
             --radius: 20px;
@@ -35,314 +32,202 @@
         *{margin:0;padding:0;box-sizing:border-box;}
         body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--warm);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
         img{display:block;max-width:100%;}
-
-        /* ── Typography ── */
         .serif{font-family:'DM Serif Display',Georgia,serif;font-weight:400;}
         .label{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:var(--green);margin-bottom:14px;}
 
-        /* ── Scroll animation ── */
-        .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1);}
-        .reveal.visible{opacity:1;transform:none;}
-        .reveal.d1{transition-delay:.1s;}
-        .reveal.d2{transition-delay:.22s;}
-        .reveal.d3{transition-delay:.34s;}
-        .reveal.d4{transition-delay:.46s;}
+        /* ── Animations ── */
+        .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.23,1,.32,1),transform .7s cubic-bezier(.23,1,.32,1);}
+        .reveal.vis{opacity:1;transform:none;}
+        .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
-        /* ── Buttons ── */
-        .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--green);color:#fff;padding:17px 38px;border-radius:14px;text-decoration:none;font-size:16px;font-weight:600;letter-spacing:.2px;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(91,138,111,.25);}
+        .btn{display:inline-flex;align-items:center;background:var(--green);color:#fff;padding:17px 38px;border-radius:14px;text-decoration:none;font-size:16px;font-weight:600;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(91,138,111,.25);}
         .btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(91,138,111,.35);}
-        .btn-outline{background:transparent;border:1.5px solid var(--green);color:var(--green);box-shadow:none;padding:15px 32px;}
-        .btn-outline:hover{background:var(--green-light);box-shadow:none;transform:translateY(-1px);}
 
-        /* ── Icon circles (match app) ── */
-        .ic{width:52px;height:52px;border-radius:16px;background:var(--green-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-        .ic svg{width:22px;height:22px;}
-        .ic-lg{width:64px;height:64px;border-radius:20px;}
-        .ic-lg svg{width:28px;height:28px;}
-
-        /* ═══════════════════════════════════ */
-        /* ─── HERO ─── */
-        /* ═══════════════════════════════════ */
+        /* ═════════════ HERO ═════════════ */
         .hero{
             min-height:100vh;min-height:100svh;
             display:flex;flex-direction:column;align-items:center;justify-content:center;
             text-align:center;padding:48px 24px 56px;position:relative;
         }
-        /* Soft radial glow */
         .hero::before{
-            content:'';position:absolute;width:420px;height:420px;
+            content:'';position:absolute;width:380px;height:380px;
             background:radial-gradient(circle,rgba(91,138,111,.08) 0%,transparent 70%);
             border-radius:50%;pointer-events:none;
         }
 
-        .hero-badge{
-            display:inline-flex;align-items:center;gap:8px;
-            background:var(--white);border:1px solid var(--warm-dark);
-            padding:6px 16px 6px 6px;border-radius:40px;
-            font-size:12px;font-weight:600;color:var(--text-soft);
-            margin-bottom:32px;box-shadow:var(--shadow-sm);
+        #heroHeart{
+            width:160px;height:160px;margin-bottom:20px;position:relative;z-index:1;
+            filter:drop-shadow(0 8px 24px rgba(91,138,111,.15));
         }
-        .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 2s ease infinite;}
-        @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 
-        .app-icon{
-            width:108px;height:108px;border-radius:28px;
-            box-shadow:var(--shadow-lg);margin-bottom:28px;
-            animation:float 5s ease-in-out infinite;
-        }
-        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+        .hero h1{font-family:'DM Serif Display',serif;font-size:54px;letter-spacing:-.5px;margin-bottom:14px;line-height:1.08;}
+        .hero .tagline{font-size:18px;color:var(--text-soft);max-width:340px;line-height:1.65;margin-bottom:36px;}
+        .hero .sub{font-size:13px;color:var(--text-muted);margin-top:14px;}
 
-        .hero h1{
-            font-family:'DM Serif Display',Georgia,serif;font-weight:400;
-            font-size:54px;letter-spacing:-.5px;color:var(--text);
-            margin-bottom:16px;line-height:1.08;
-        }
-        .hero .tagline{
-            font-size:18px;color:var(--text-soft);max-width:360px;
-            line-height:1.65;margin-bottom:36px;
-        }
-        .hero .sub{font-size:13px;color:var(--text-muted);margin-top:16px;}
-
-        /* ═══════════════════════════════════ */
-        /* ─── SOCIAL PROOF BAR ─── */
-        /* ═══════════════════════════════════ */
+        /* ═════════════ PROOF BAR ═════════════ */
         .proof{
-            background:var(--white);padding:32px 24px;
-            display:flex;align-items:center;justify-content:center;gap:48px;
-            flex-wrap:wrap;border-bottom:1px solid var(--warm-mid);
+            background:var(--white);padding:28px 24px;
+            display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap;
+            border-bottom:1px solid var(--warm-mid);
         }
         .proof-item{text-align:center;}
-        .proof-num{font-family:'DM Serif Display',serif;font-size:28px;color:var(--text);line-height:1;}
-        .proof-label{font-size:12px;color:var(--text-muted);margin-top:4px;font-weight:500;}
+        .proof-num{font-family:'DM Serif Display',serif;font-size:28px;color:var(--text);}
+        .proof-label{font-size:12px;color:var(--text-muted);margin-top:2px;font-weight:500;}
 
-        /* ═══════════════════════════════════ */
-        /* ─── QUOTE ─── */
-        /* ═══════════════════════════════════ */
-        .quote{
-            background:var(--white);padding:80px 24px;text-align:center;
-            position:relative;overflow:hidden;
-        }
-        /* Large decorative quote mark */
+        /* ═════════════ QUOTE ═════════════ */
+        .quote{background:var(--white);padding:72px 24px;text-align:center;position:relative;overflow:hidden;}
         .quote::before{
-            content:'\201C';position:absolute;top:24px;left:50%;transform:translateX(-50%);
-            font-family:'DM Serif Display',serif;font-size:160px;color:var(--green-light);
-            line-height:1;pointer-events:none;
+            content:'\201C';position:absolute;top:12px;left:50%;transform:translateX(-50%);
+            font-family:'DM Serif Display',serif;font-size:180px;color:var(--green-light);line-height:1;pointer-events:none;
         }
-        .quote blockquote{
-            font-family:'DM Serif Display',Georgia,serif;font-size:26px;
-            font-weight:400;line-height:1.5;color:var(--text);
-            max-width:500px;margin:0 auto 14px;position:relative;z-index:1;
-        }
+        .quote blockquote{font-family:'DM Serif Display',serif;font-size:26px;line-height:1.5;max-width:500px;margin:0 auto 12px;position:relative;z-index:1;}
         .quote cite{font-size:13px;color:var(--text-muted);font-style:normal;font-weight:500;}
 
-        /* ═══════════════════════════════════ */
-        /* ─── PRACTICE FLOW ─── */
-        /* ═══════════════════════════════════ */
+        /* ═════════════ PRACTICE (PHONE MOCKUPS) ═════════════ */
         .practice{padding:100px 24px;background:var(--warm);}
-
         .practice-header{text-align:center;max-width:460px;margin:0 auto 64px;}
         .practice-header h2{font-size:36px;margin-bottom:14px;}
         .practice-header p{font-size:16px;color:var(--text-soft);line-height:1.65;}
 
-        .flow{max-width:540px;margin:0 auto;position:relative;padding-left:36px;}
-
-        /* Vertical vine line */
-        .flow::before{
-            content:'';position:absolute;left:25px;top:26px;bottom:26px;
-            width:2px;background:linear-gradient(to bottom,var(--green) 0%,var(--warm-dark) 100%);
-            opacity:.2;border-radius:1px;
+        .steps-grid{
+            display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+            max-width:900px;margin:0 auto;
         }
 
-        .flow-step{display:flex;gap:20px;align-items:flex-start;margin-bottom:16px;position:relative;}
-        .flow-step:last-child{margin-bottom:0;}
-
-        .flow-step .ic{background:var(--white);box-shadow:var(--shadow);position:relative;z-index:1;}
-
-        .flow-card{
-            flex:1;background:var(--white);border-radius:var(--radius);
-            padding:24px 26px;box-shadow:var(--shadow);
-            transition:transform .3s,box-shadow .3s;
+        .phone{
+            background:var(--white);border-radius:28px;
+            box-shadow:var(--shadow-lg);overflow:hidden;
+            transition:transform .3s;position:relative;
         }
-        .flow-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);}
+        .phone:hover{transform:translateY(-6px);}
 
-        .flow-card h3{font-size:17px;font-weight:700;color:var(--text);margin-bottom:6px;}
-        .flow-card p{font-size:14px;color:var(--text-soft);line-height:1.65;}
-        .flow-card .tag{
-            display:inline-block;margin-top:10px;font-size:11px;font-weight:600;
-            color:var(--green);background:var(--green-light);padding:4px 12px;border-radius:20px;
+        /* Phone status bar */
+        .phone-bar{
+            height:28px;background:var(--warm);
+            display:flex;align-items:center;justify-content:center;
+            gap:4px;padding:8px;
+        }
+        .phone-bar .notch{width:40px;height:5px;background:var(--warm-mid);border-radius:3px;}
+
+        .phone-body{padding:20px 16px 24px;}
+
+        .phone-step{
+            display:flex;align-items:center;gap:8px;margin-bottom:14px;
+        }
+        .phone-step .step-dot{
+            width:32px;height:32px;border-radius:10px;background:var(--green-light);
+            display:flex;align-items:center;justify-content:center;flex-shrink:0;
+        }
+        .phone-step .step-dot svg{width:16px;height:16px;}
+        .phone-step .step-name{font-size:14px;font-weight:700;color:var(--text);}
+        .phone-step .step-num{font-size:10px;color:var(--text-muted);font-weight:600;}
+
+        .phone-preview{
+            background:var(--warm);border-radius:14px;padding:16px;
+            min-height:120px;display:flex;flex-direction:column;
+            justify-content:center;align-items:center;text-align:center;
         }
 
-        /* ═══════════════════════════════════ */
-        /* ─── FEATURES ─── */
-        /* ═══════════════════════════════════ */
-        .features{background:var(--white);padding:100px 24px;}
+        .phone-preview .preview-icon{font-size:28px;margin-bottom:8px;opacity:.7;}
+        .phone-preview p{font-size:11px;color:var(--text-soft);line-height:1.5;}
+        .phone-preview .preview-lines{width:100%;display:flex;flex-direction:column;gap:6px;align-items:flex-start;}
+        .phone-preview .line{height:6px;background:var(--warm-mid);border-radius:3px;}
 
-        .features-header{text-align:center;max-width:440px;margin:0 auto 56px;}
-        .features-header h2{font-size:36px;}
+        .phone-tag{
+            display:inline-block;margin-top:12px;font-size:10px;font-weight:600;
+            color:var(--green);background:var(--green-light);padding:4px 10px;border-radius:12px;
+        }
 
-        .feature-grid{
-            display:grid;grid-template-columns:repeat(2,1fr);gap:20px;
-            max-width:640px;margin:0 auto;
-        }
-        .f-card{
-            background:var(--warm);border-radius:var(--radius);padding:32px 26px;
-            transition:transform .3s;position:relative;overflow:hidden;
-        }
-        .f-card:hover{transform:translateY(-3px);}
-        /* Decorative corner circle */
-        .f-card::after{
-            content:'';position:absolute;top:-20px;right:-20px;
-            width:80px;height:80px;background:var(--green-light);
-            border-radius:50%;opacity:.5;pointer-events:none;
-        }
-        .f-card .ic{margin-bottom:18px;position:relative;z-index:1;}
-        .f-card h3{font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px;position:relative;z-index:1;}
-        .f-card p{font-size:14px;color:var(--text-soft);line-height:1.6;position:relative;z-index:1;}
-
-        /* ═══════════════════════════════════ */
-        /* ─── PLANT ─── */
-        /* ═══════════════════════════════════ */
+        /* ═════════════ PLANT ═════════════ */
         .plant-section{
             background:linear-gradient(180deg,var(--warm) 0%,var(--green-light) 100%);
             padding:100px 24px;text-align:center;
         }
         .plant-inner{max-width:460px;margin:0 auto;}
         .plant-section h2{font-size:36px;margin-bottom:14px;}
-        .plant-section>div>p{font-size:16px;color:var(--text-soft);line-height:1.65;}
+        .plant-section .desc{font-size:16px;color:var(--text-soft);line-height:1.65;margin-bottom:48px;}
 
-        .plant-visual{
-            width:180px;height:240px;margin:48px auto 0;position:relative;
+        /* SVG Plant */
+        .plant-svg{
+            width:220px;height:300px;margin:0 auto;
+            opacity:0;transition:opacity .6s ease;
         }
-        /* Pot */
-        .pot{
-            position:absolute;bottom:0;left:50%;transform:translateX(-50%);
-            width:64px;height:52px;
-            background:linear-gradient(135deg,#C9A97A,#A68C6A);
-            border-radius:6px 6px 14px 14px;
-            box-shadow:inset 0 -6px 12px rgba(0,0,0,.08),0 4px 8px rgba(0,0,0,.06);
-        }
-        .pot::before{
-            content:'';position:absolute;top:-7px;left:-5px;right:-5px;height:11px;
-            background:linear-gradient(135deg,#D4B98A,#B89870);border-radius:6px;
-        }
-        .pot::after{
-            content:'';position:absolute;top:6px;left:12px;right:12px;height:5px;
-            background:rgba(255,255,255,.15);border-radius:3px;
-        }
-        .soil{
-            position:absolute;bottom:42px;left:50%;transform:translateX(-50%);
-            width:44px;height:10px;background:#7A5F3A;border-radius:50%;opacity:.5;
-        }
-        /* Stem */
-        .stem{
-            position:absolute;bottom:50px;left:50%;width:3px;margin-left:-1.5px;
-            height:130px;background:linear-gradient(to top,#8B7355,var(--green));
-            border-radius:2px;transform-origin:bottom;transform:scaleY(0);
-        }
-        .plant-visual.go .stem{animation:grow 1.8s cubic-bezier(.23,1,.32,1) forwards;}
-        @keyframes grow{to{transform:scaleY(1)}}
+        .plant-svg.go{opacity:1;}
 
-        /* Leaves */
-        .lf{
-            position:absolute;width:30px;height:24px;
-            background:var(--green);border-radius:0 60% 0 60%;
-            opacity:0;transition:opacity .5s,transform .6s cubic-bezier(.23,1,.32,1);
+        /* Animate paths */
+        .plant-svg .stem-path{
+            stroke-dasharray:200;stroke-dashoffset:200;
+            transition:stroke-dashoffset 2s cubic-bezier(.23,1,.32,1);
         }
-        .plant-visual.go .lf{opacity:1;}
-        .lf-1{bottom:140px;left:50%;transform:translateX(3px) rotate(-25deg);transition-delay:.9s;}
-        .lf-2{bottom:110px;right:50%;transform:translateX(-3px) rotate(25deg) scaleX(-1);transition-delay:1.2s;}
-        .lf-3{bottom:165px;left:50%;margin-left:2px;transform:rotate(-15deg);transition-delay:1.5s;width:26px;height:20px;}
+        .plant-svg.go .stem-path{stroke-dashoffset:0;}
 
-        /* Flower */
-        .bloom{
-            position:absolute;top:10px;left:50%;transform:translateX(-50%) scale(0);
-            width:44px;height:44px;
-            background:radial-gradient(circle,#E8A0A0 30%,#D4737388 70%);
-            border-radius:50%;
-            box-shadow:0 0 20px rgba(232,160,160,.3);
-            transition:transform .6s cubic-bezier(.34,1.56,.64,1);
+        .plant-svg .vine-l,.plant-svg .vine-r{
+            stroke-dasharray:300;stroke-dashoffset:300;
+            transition:stroke-dashoffset 2.5s cubic-bezier(.23,1,.32,1) .6s;
         }
-        .plant-visual.go .bloom{transform:translateX(-50%) scale(1);transition-delay:1.8s;}
-        /* Petals */
-        .bloom::before,.bloom::after{
-            content:'';position:absolute;width:18px;height:18px;
-            background:rgba(255,255,255,.3);border-radius:50%;
-        }
-        .bloom::before{top:4px;left:4px;}
-        .bloom::after{bottom:6px;right:4px;}
+        .plant-svg.go .vine-l,.plant-svg.go .vine-r{stroke-dashoffset:0;}
 
-        /* ═══════════════════════════════════ */
-        /* ─── TESTIMONIALS ─── */
-        /* ═══════════════════════════════════ */
+        .plant-svg .leaf{opacity:0;transform-origin:center;transition:opacity .5s ease,transform .6s cubic-bezier(.34,1.56,.64,1);}
+        .plant-svg.go .leaf{opacity:1;transform:scale(1);}
+        .plant-svg .leaf{transform:scale(0);}
+        .plant-svg .l1{transition-delay:1.2s}.plant-svg .l2{transition-delay:1.4s}
+        .plant-svg .l3{transition-delay:1.6s}.plant-svg .l4{transition-delay:1.8s}
+        .plant-svg .l5{transition-delay:2s}.plant-svg .l6{transition-delay:2.2s}
+
+        .plant-svg .flower{opacity:0;transform:scale(0);transform-origin:center;transition:opacity .4s,transform .6s cubic-bezier(.34,1.56,.64,1);}
+        .plant-svg.go .flower{opacity:1;transform:scale(1);}
+        .plant-svg .f1{transition-delay:2.4s}.plant-svg .f2{transition-delay:2.7s}.plant-svg .f3{transition-delay:3s}
+
+        /* ═════════════ TESTIMONIALS ═════════════ */
         .testimonials{background:var(--white);padding:100px 24px;}
         .testimonials-header{text-align:center;max-width:440px;margin:0 auto 48px;}
         .testimonials-header h2{font-size:36px;}
-
-        .t-grid{
-            display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
-            max-width:780px;margin:0 auto;
-        }
-        .t-card{
-            background:var(--warm);border-radius:var(--radius);padding:28px 24px;
-            transition:transform .3s;
-        }
+        .t-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:780px;margin:0 auto;}
+        .t-card{background:var(--warm);border-radius:var(--radius);padding:28px 24px;transition:transform .3s;}
         .t-card:hover{transform:translateY(-3px);}
         .t-card:nth-child(2){transform:translateY(-8px);}
         .t-card:nth-child(2):hover{transform:translateY(-12px);}
-
         .stars{display:flex;gap:2px;margin-bottom:14px;}
         .stars svg{width:15px;height:15px;fill:#F5A623;}
         .t-card blockquote{font-size:15px;color:var(--text);line-height:1.65;font-style:italic;margin-bottom:16px;}
         .t-card cite{font-size:13px;color:var(--text-muted);font-style:normal;font-weight:600;}
 
-        /* ═══════════════════════════════════ */
-        /* ─── FINAL CTA ─── */
-        /* ═══════════════════════════════════ */
-        .cta-section{
-            background:var(--warm);text-align:center;padding:80px 24px 120px;
-            position:relative;overflow:hidden;
-        }
-        /* Large soft glow */
+        /* ═════════════ FINAL CTA ═════════════ */
+        .cta-section{background:var(--warm);text-align:center;padding:80px 24px 120px;position:relative;overflow:hidden;}
         .cta-section::before{
-            content:'';position:absolute;bottom:-100px;left:50%;transform:translateX(-50%);
-            width:500px;height:300px;
-            background:radial-gradient(ellipse,rgba(91,138,111,.07) 0%,transparent 70%);
-            pointer-events:none;
+            content:'';position:absolute;bottom:-80px;left:50%;transform:translateX(-50%);
+            width:500px;height:300px;background:radial-gradient(ellipse,rgba(91,138,111,.06) 0%,transparent 70%);pointer-events:none;
         }
-        .cta-section .app-icon{width:80px;height:80px;border-radius:22px;margin:0 auto 28px;}
+        #ctaHeart{width:100px;height:100px;margin:0 auto 24px;filter:drop-shadow(0 4px 16px rgba(91,138,111,.12));}
         .cta-section h2{font-size:38px;margin-bottom:14px;}
         .cta-section>p{font-size:17px;color:var(--text-soft);line-height:1.65;max-width:380px;margin:0 auto 36px;}
         .cta-section .note{margin-top:14px;font-size:13px;color:var(--text-muted);}
 
-        /* ═══════════════════════════════════ */
-        /* ─── FOOTER ─── */
-        /* ═══════════════════════════════════ */
-        footer{text-align:center;padding:32px 24px;border-top:1px solid var(--warm-dark);}
+        /* ═════════════ FOOTER ═════════════ */
+        footer{text-align:center;padding:32px 24px;border-top:1px solid var(--warm-mid);}
         footer nav{margin-bottom:8px;}
         footer a{color:var(--text-muted);text-decoration:none;margin:0 14px;font-size:13px;transition:color .2s;}
         footer a:hover{color:var(--green);}
         footer .cp{font-size:11px;color:#ccc;}
 
-        /* ═══════════════════════════════════ */
-        /* ─── RESPONSIVE ─── */
-        /* ═══════════════════════════════════ */
+        /* ═════════════ RESPONSIVE ═════════════ */
+        @media(max-width:800px){
+            .steps-grid{grid-template-columns:repeat(2,1fr);max-width:480px;}
+        }
         @media(max-width:700px){
             .hero h1{font-size:40px;}
             .hero .tagline{font-size:16px;}
-            .practice-header h2,.features-header h2,.plant-section h2,.testimonials-header h2,.cta-section h2{font-size:28px;}
+            .practice-header h2,.plant-section h2,.testimonials-header h2,.cta-section h2{font-size:28px;}
             .quote blockquote{font-size:22px;}
-            .feature-grid{grid-template-columns:1fr;max-width:380px;}
             .t-grid{grid-template-columns:1fr;max-width:380px;}
             .t-card:nth-child(2){transform:none;}
-            .proof{gap:28px;padding:24px 20px;}
-            .proof-num{font-size:24px;}
-            section,.practice,.features,.plant-section,.testimonials,.cta-section{padding:72px 20px;}
-            .flow{padding-left:0;}
-            .flow::before{display:none;}
+            .proof{gap:24px;padding:24px 20px;}
+            .proof-num{font-size:22px;}
+            #heroHeart{width:130px;height:130px;}
         }
-        @media(max-width:380px){
-            .hero h1{font-size:34px;}
-            .btn{padding:15px 28px;font-size:15px;}
+        @media(max-width:480px){
+            .steps-grid{grid-template-columns:1fr;max-width:300px;}
+            .hero h1{font-size:36px;}
         }
     </style>
 </head>
@@ -350,35 +235,19 @@
 
 <!-- ═══ HERO ═══ -->
 <section class="hero">
-    <div class="hero-badge">
-        <span class="dot"></span>
-        Available now on iOS & Android
-    </div>
-    <img src="app-icon.png" alt="Blossom Gratitude" class="app-icon" width="108" height="108">
+    <div id="heroHeart"></div>
     <h1 class="serif">Blossom</h1>
     <p class="tagline">A gentle daily practice to help you feel grateful. 5 minutes every morning.</p>
     <a href="#" class="btn">Try free for 7 days</a>
-    <p class="sub">No credit card needed</p>
+    <p class="sub">No credit card needed &middot; iOS & Android</p>
 </section>
 
-<!-- ═══ SOCIAL PROOF ═══ -->
+<!-- ═══ PROOF BAR ═══ -->
 <div class="proof reveal">
-    <div class="proof-item">
-        <div class="proof-num serif">600+</div>
-        <div class="proof-label">Gratitude topics</div>
-    </div>
-    <div class="proof-item">
-        <div class="proof-num serif">10</div>
-        <div class="proof-label">Languages</div>
-    </div>
-    <div class="proof-item">
-        <div class="proof-num serif">5 min</div>
-        <div class="proof-label">Per day</div>
-    </div>
-    <div class="proof-item">
-        <div class="proof-num serif">4</div>
-        <div class="proof-label">Guided steps</div>
-    </div>
+    <div class="proof-item"><div class="proof-num serif">600+</div><div class="proof-label">Gratitude topics</div></div>
+    <div class="proof-item"><div class="proof-num serif">10</div><div class="proof-label">Languages</div></div>
+    <div class="proof-item"><div class="proof-num serif">5 min</div><div class="proof-label">Per day</div></div>
+    <div class="proof-item"><div class="proof-num serif">4</div><div class="proof-label">Guided steps</div></div>
 </div>
 
 <!-- ═══ QUOTE ═══ -->
@@ -387,91 +256,83 @@
     <cite>Rooted in positive psychology research</cite>
 </section>
 
-<!-- ═══ PRACTICE FLOW ═══ -->
+<!-- ═══ PRACTICE: PHONE MOCKUPS ═══ -->
 <section class="practice">
     <div class="practice-header reveal">
         <span class="label">Your daily practice</span>
         <h2 class="serif">4 gentle steps,<br>every morning</h2>
-        <p>Each step is designed to help you not just <em>think</em> gratitude &mdash; but truly <em>feel</em> it.</p>
+        <p>Each step helps you not just <em>think</em> gratitude &mdash; but truly <em>feel</em> it.</p>
     </div>
-    <div class="flow">
-        <div class="flow-step reveal d1">
-            <div class="ic">
-                <svg viewBox="0 0 24 24" fill="none"><polygon points="5,3 19,12 5,21" fill="#5B8A6F"/></svg>
-            </div>
-            <div class="flow-card">
-                <h3>Watch</h3>
-                <p>A short gratitude video crafted just for today. Beautiful imagery, gentle narration, calming music &mdash; a new topic every morning.</p>
-                <span class="tag">New video daily</span>
-            </div>
-        </div>
-        <div class="flow-step reveal d2">
-            <div class="ic">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M12 18c-4 0-7-2-7-5s3-5 7-5 7 2 7 5" stroke="#5B8A6F" stroke-width="1.8" stroke-linecap="round"/><path d="M9 12v-1a3 3 0 016 0v1" stroke="#5B8A6F" stroke-width="1.8" stroke-linecap="round"/><path d="M12 18v3" stroke="#5B8A6F" stroke-width="1.8" stroke-linecap="round"/></svg>
-            </div>
-            <div class="flow-card">
-                <h3>Reflect</h3>
-                <p>Speak or write what you're grateful for. There's no wrong answer &mdash; even the smallest things count.</p>
-                <span class="tag">Voice or text</span>
+    <div class="steps-grid">
+        <!-- Step 1: Watch -->
+        <div class="phone reveal d1">
+            <div class="phone-bar"><div class="notch"></div></div>
+            <div class="phone-body">
+                <div class="phone-step">
+                    <div class="step-dot"><svg viewBox="0 0 24 24" fill="none"><polygon points="5,3 19,12 5,21" fill="#5B8A6F"/></svg></div>
+                    <div><div class="step-num">STEP 1</div><div class="step-name">Watch</div></div>
+                </div>
+                <div class="phone-preview">
+                    <svg width="48" height="32" viewBox="0 0 48 32" style="margin-bottom:10px;opacity:.5"><rect width="48" height="32" rx="6" fill="#5B8A6F" opacity=".15"/><polygon points="19,8 33,16 19,24" fill="#5B8A6F" opacity=".4"/></svg>
+                    <p>A short gratitude video crafted just for today. Beautiful imagery, narration, and calming music.</p>
+                </div>
+                <span class="phone-tag">New video daily</span>
             </div>
         </div>
-        <div class="flow-step reveal d3">
-            <div class="ic">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M20 12v10H4V12" stroke="#5B8A6F" stroke-width="1.8"/><path d="M2 7h20v5H2z" stroke="#5B8A6F" stroke-width="1.8"/><path d="M12 22V7" stroke="#5B8A6F" stroke-width="1.8"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z" stroke="#5B8A6F" stroke-width="1.8"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z" stroke="#5B8A6F" stroke-width="1.8"/></svg>
-            </div>
-            <div class="flow-card">
-                <h3>Receive</h3>
-                <p>Discover 5 hidden gifts in your everyday life. Small reminders of the good that already surrounds you.</p>
-                <span class="tag">5 curated gifts daily</span>
+        <!-- Step 2: Reflect -->
+        <div class="phone reveal d2">
+            <div class="phone-bar"><div class="notch"></div></div>
+            <div class="phone-body">
+                <div class="phone-step">
+                    <div class="step-dot"><svg viewBox="0 0 24 24" fill="none"><path d="M7 11v-1a5 5 0 0110 0v1" stroke="#5B8A6F" stroke-width="1.8" stroke-linecap="round"/><path d="M5 11h14v6a3 3 0 01-3 3H8a3 3 0 01-3-3v-6z" stroke="#5B8A6F" stroke-width="1.8"/></svg></div>
+                    <div><div class="step-num">STEP 2</div><div class="step-name">Reflect</div></div>
+                </div>
+                <div class="phone-preview">
+                    <div class="preview-lines" style="margin-bottom:10px">
+                        <div class="line" style="width:85%;background:var(--green-light)"></div>
+                        <div class="line" style="width:70%;background:var(--green-light)"></div>
+                        <div class="line" style="width:55%;background:var(--green-light)"></div>
+                    </div>
+                    <p>Speak or write what you're grateful for. Even the smallest things count.</p>
+                </div>
+                <span class="phone-tag">Voice or text</span>
             </div>
         </div>
-        <div class="flow-step reveal d4">
-            <div class="ic">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#5B8A6F"/></svg>
-            </div>
-            <div class="flow-card">
-                <h3>Feel</h3>
-                <p>Close your eyes. A guided moment helps you move gratitude from your mind into your body. This is where the magic happens.</p>
-                <span class="tag">Guided audio meditation</span>
+        <!-- Step 3: Receive -->
+        <div class="phone reveal d3">
+            <div class="phone-bar"><div class="notch"></div></div>
+            <div class="phone-body">
+                <div class="phone-step">
+                    <div class="step-dot"><svg viewBox="0 0 24 24" fill="none"><path d="M20 12v10H4V12" stroke="#5B8A6F" stroke-width="1.8"/><path d="M2 7h20v5H2z" stroke="#5B8A6F" stroke-width="1.8"/><path d="M12 22V7" stroke="#5B8A6F" stroke-width="1.8"/><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7z" stroke="#5B8A6F" stroke-width="1.8"/><path d="M12 7h4.5a2.5 2.5 0 000-5C13 2 12 7 12 7z" stroke="#5B8A6F" stroke-width="1.8"/></svg></div>
+                    <div><div class="step-num">STEP 3</div><div class="step-name">Receive</div></div>
+                </div>
+                <div class="phone-preview">
+                    <div style="display:flex;gap:6px;margin-bottom:10px">
+                        <div style="width:28px;height:28px;border-radius:8px;background:var(--green-light)"></div>
+                        <div style="width:28px;height:28px;border-radius:8px;background:var(--green-light)"></div>
+                        <div style="width:28px;height:28px;border-radius:8px;background:var(--green-light)"></div>
+                        <div style="width:28px;height:28px;border-radius:8px;background:var(--green-light)"></div>
+                        <div style="width:28px;height:28px;border-radius:8px;background:var(--green-light)"></div>
+                    </div>
+                    <p>Discover 5 hidden gifts in your everyday life. Reminders of the good around you.</p>
+                </div>
+                <span class="phone-tag">5 curated gifts daily</span>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- ═══ FEATURES ═══ -->
-<section class="features">
-    <div class="features-header reveal">
-        <span class="label">Why Blossom</span>
-        <h2 class="serif">Everything you need,<br>nothing you don't</h2>
-    </div>
-    <div class="feature-grid">
-        <div class="f-card reveal d1">
-            <div class="ic">
-                <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="3" width="20" height="18" rx="3" stroke="#5B8A6F" stroke-width="1.8"/><polygon points="10,8 16,12 10,16" fill="#5B8A6F"/></svg>
+        <!-- Step 4: Feel -->
+        <div class="phone reveal d4">
+            <div class="phone-bar"><div class="notch"></div></div>
+            <div class="phone-body">
+                <div class="phone-step">
+                    <div class="step-dot"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#5B8A6F"/></svg></div>
+                    <div><div class="step-num">STEP 4</div><div class="step-name">Feel</div></div>
+                </div>
+                <div class="phone-preview">
+                    <svg width="48" height="48" viewBox="0 0 48 48" style="margin-bottom:8px;opacity:.4"><circle cx="24" cy="24" r="20" fill="none" stroke="#5B8A6F" stroke-width="2"/><circle cx="24" cy="24" r="12" fill="none" stroke="#5B8A6F" stroke-width="1.5" opacity=".5"/><circle cx="24" cy="24" r="5" fill="#5B8A6F" opacity=".3"/></svg>
+                    <p>Close your eyes. A guided moment to move gratitude from mind into body.</p>
+                </div>
+                <span class="phone-tag">Guided meditation</span>
             </div>
-            <h3>AI-crafted daily videos</h3>
-            <p>Every video is unique. Stunning visuals, warm narration, and calming music in your language.</p>
-        </div>
-        <div class="f-card reveal d2">
-            <div class="ic">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="#5B8A6F" stroke-width="1.8" rx="2"/><path d="M8 8h8M8 12h6M8 16h4" stroke="#5B8A6F" stroke-width="1.8" stroke-linecap="round"/></svg>
-            </div>
-            <h3>Your gratitude journal</h3>
-            <p>Look back on every entry. See how far you've come. Your story of gratitude, always with you.</p>
-        </div>
-        <div class="f-card reveal d3">
-            <div class="ic">
-                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8A6F" stroke-width="1.8"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10A15.3 15.3 0 0112 2z" stroke="#5B8A6F" stroke-width="1.8"/></svg>
-            </div>
-            <h3>10 languages</h3>
-            <p>Dutch, English, German, French, Spanish, Italian, Portuguese, Polish, Swedish, and Turkish.</p>
-        </div>
-        <div class="f-card reveal d4">
-            <div class="ic">
-                <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#5B8A6F" stroke-width="1.8"/><path d="M12 6v6l4 2" stroke="#5B8A6F" stroke-width="1.8" stroke-linecap="round"/></svg>
-            </div>
-            <h3>Just 5 minutes</h3>
-            <p>No long sessions. Open the app, follow 4 gentle steps, carry the feeling all day.</p>
         </div>
     </div>
 </section>
@@ -481,16 +342,70 @@
     <div class="plant-inner reveal" id="plantSection">
         <span class="label">Your progress</span>
         <h2 class="serif">Your plant grows with you</h2>
-        <p>Complete your daily practice and watch your gratitude plant grow. Skip a day and it weakens &mdash; but it never dies. Just like you, it's always ready to bloom again.</p>
-        <div class="plant-visual" id="plantVisual">
-            <div class="bloom"></div>
-            <div class="lf lf-1"></div>
-            <div class="lf lf-2"></div>
-            <div class="lf lf-3"></div>
-            <div class="stem"></div>
-            <div class="soil"></div>
-            <div class="pot"></div>
-        </div>
+        <p class="desc">Complete your practice and watch your gratitude plant grow. Skip a day and it weakens &mdash; but it never dies. Just like you, it's always ready to bloom again.</p>
+
+        <svg class="plant-svg" id="plantSvg" viewBox="0 0 220 300" fill="none">
+            <!-- Pot -->
+            <rect x="72" y="252" width="76" height="8" rx="4" fill="#C9A97A"/>
+            <path d="M78 260 L82 296 Q84 300 88 300 L132 300 Q136 300 138 296 L142 260 Z" fill="url(#potGrad)"/>
+            <ellipse cx="110" cy="260" rx="32" ry="5" fill="#7A5F3A" opacity=".4"/>
+
+            <!-- Stem -->
+            <path class="stem-path" d="M110 255 C110 240, 108 200, 110 170 C112 140, 108 110, 110 80" stroke="#4D7D62" stroke-width="3.5" stroke-linecap="round"/>
+
+            <!-- Left vine -->
+            <path class="vine-l" d="M110 180 C100 175, 70 172, 50 160 C35 150, 30 130, 35 115" stroke="#4D7D62" stroke-width="2" stroke-linecap="round"/>
+
+            <!-- Right vine -->
+            <path class="vine-r" d="M110 150 C120 145, 150 142, 170 130 C185 120, 188 100, 183 85" stroke="#4D7D62" stroke-width="2" stroke-linecap="round"/>
+
+            <!-- Leaves -->
+            <g class="leaf l1" transform="translate(96,160) rotate(-30)">
+                <path d="M0 0 C-4-5,-6-12,-3-20 C-1-25,1-25,3-20 C6-12,4-5,0 0Z" fill="#5E9E72"/>
+                <path d="M0-1 L0-18" stroke="#3A6350" stroke-width=".7" opacity=".5"/>
+            </g>
+            <g class="leaf l2" transform="translate(124,140) rotate(25)">
+                <path d="M0 0 C-5-4,-8-10,-6-18 C-3-24,3-24,6-18 C8-10,5-4,0 0Z" fill="#7AB87A"/>
+                <path d="M0-1 L0-17" stroke="#4A7350" stroke-width=".7" opacity=".5"/>
+            </g>
+            <g class="leaf l3" transform="translate(90,120) rotate(-20)">
+                <path d="M0 0 C-3-5,-4-12,-2-22 C-.5-27,.5-27,2-22 C3-12,2-5,0 0Z" fill="#4A8860"/>
+                <path d="M0-1 L0-20" stroke="#2A5340" stroke-width=".7" opacity=".5"/>
+            </g>
+            <g class="leaf l4" transform="translate(128,105) rotate(35)">
+                <path d="M0 0 C-4-4,-6-10,-4-17 C-2-23,-1-26,0-25 C1-26,2-23,4-17 C6-10,4-4,0 0Z" fill="#6EAF85"/>
+            </g>
+            <g class="leaf l5" transform="translate(45,130) rotate(-45)">
+                <path d="M0 0 C-3-4,-5-10,-3-16 C-1-20,1-20,3-16 C5-10,3-4,0 0Z" fill="#5E9E72"/>
+            </g>
+            <g class="leaf l6" transform="translate(175,100) rotate(40)">
+                <path d="M0 0 C-4-4,-5-10,-3-16 C-1-20,1-20,3-16 C5-10,4-4,0 0Z" fill="#7AB87A"/>
+            </g>
+
+            <!-- Flowers -->
+            <g class="flower f1" transform="translate(35,108)">
+                <circle r="4" fill="#F5D070"/>
+                <g><path d="M0-1 C-3-5,-3-11,0-13 C3-11,3-5,0-1Z" fill="#F0C0CB"/><path d="M0-1 C-3-5,-3-11,0-13 C3-11,3-5,0-1Z" fill="#F0C0CB" transform="rotate(72)"/><path d="M0-1 C-3-5,-3-11,0-13 C3-11,3-5,0-1Z" fill="#F0C0CB" transform="rotate(144)"/><path d="M0-1 C-3-5,-3-11,0-13 C3-11,3-5,0-1Z" fill="#F0C0CB" transform="rotate(216)"/><path d="M0-1 C-3-5,-3-11,0-13 C3-11,3-5,0-1Z" fill="#F0C0CB" transform="rotate(288)"/></g>
+                <circle r="3.5" fill="#F5D070"/>
+            </g>
+            <g class="flower f2" transform="translate(183,78)">
+                <circle r="3.5" fill="#F0E080"/>
+                <g><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#D0A0E8"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#D0A0E8" transform="rotate(72)"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#D0A0E8" transform="rotate(144)"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#D0A0E8" transform="rotate(216)"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#D0A0E8" transform="rotate(288)"/></g>
+                <circle r="3" fill="#F0E080"/>
+            </g>
+            <g class="flower f3" transform="translate(110,72)">
+                <circle r="4" fill="#FF8030"/>
+                <g><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#FFE080"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#FFE080" transform="rotate(60)"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#FFE080" transform="rotate(120)"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#FFE080" transform="rotate(180)"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#FFE080" transform="rotate(240)"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#FFE080" transform="rotate(300)"/></g>
+                <circle r="3.5" fill="#FF8030"/>
+            </g>
+
+            <defs>
+                <linearGradient id="potGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#C9A97A"/>
+                    <stop offset="100%" stop-color="#A68C6A"/>
+                </linearGradient>
+            </defs>
+        </svg>
     </div>
 </section>
 
@@ -521,14 +436,13 @@
 
 <!-- ═══ FINAL CTA ═══ -->
 <section class="cta-section">
-    <img src="app-icon.png" alt="Blossom" class="app-icon" width="80" height="80">
+    <div id="ctaHeart"></div>
     <h2 class="serif">Your first practice<br>is waiting</h2>
     <p>Start with a free 7-day trial.<br>Just you, 5 minutes, and a little bit of gratitude.</p>
     <a href="#" class="btn">Begin your free trial</a>
     <p class="note">7 days free, then $2.99/month. Cancel anytime.</p>
 </section>
 
-<!-- ═══ FOOTER ═══ -->
 <footer>
     <nav>
         <a href="/privacy">Privacy Policy</a>
@@ -539,13 +453,33 @@
 </footer>
 
 <script>
-// Scroll-triggered reveal
+// Lottie hearts
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof lottie !== 'undefined') {
+        lottie.loadAnimation({
+            container: document.getElementById('heroHeart'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'heart-beat.json'
+        });
+        lottie.loadAnimation({
+            container: document.getElementById('ctaHeart'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'heart-beat.json'
+        });
+    }
+});
+
+// Scroll reveal
 const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
         if (e.isIntersecting) {
-            e.target.classList.add('visible');
+            e.target.classList.add('vis');
             if (e.target.id === 'plantSection') {
-                document.getElementById('plantVisual').classList.add('go');
+                document.getElementById('plantSvg').classList.add('go');
             }
         }
     });
