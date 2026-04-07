@@ -98,10 +98,32 @@
         .science-item p{font-size:13px;color:var(--text-soft);line-height:1.45;}
 
         /* ═════════════ QUOTES ═════════════ */
-        .quotes{background:var(--warm);padding:72px 24px;text-align:center;position:relative;overflow:hidden;}
-        .quotes::before{content:'\201C';position:absolute;top:8px;left:50%;transform:translateX(-50%);font-family:'DM Serif Display',serif;font-size:200px;color:var(--green-light);line-height:1;pointer-events:none;}
-        .quotes blockquote{font-family:'DM Serif Display',serif;font-size:26px;line-height:1.5;max-width:500px;margin:0 auto 10px;position:relative;z-index:1;}
-        .quotes cite{font-size:14px;color:var(--text-muted);font-style:normal;font-weight:500;}
+        .quotes-section{background:var(--warm);padding:80px 24px;text-align:center;}
+        .quotes-header{margin-bottom:36px;}
+        .quotes-carousel{
+            display:grid;grid-template-columns:repeat(2,1fr);gap:20px;
+            max-width:720px;margin:0 auto;
+        }
+        .q-card{
+            background:var(--white);border-radius:var(--radius);padding:32px 28px;
+            box-shadow:var(--shadow);text-align:left;transition:transform .3s;
+            position:relative;overflow:hidden;
+        }
+        .q-card:hover{transform:translateY(-3px);}
+        .q-card::before{
+            content:'\201C';position:absolute;top:-8px;left:12px;
+            font-family:'DM Serif Display',serif;font-size:80px;color:var(--green-light);
+            line-height:1;pointer-events:none;
+        }
+        .q-card blockquote{
+            font-size:18px;line-height:1.55;margin-bottom:14px;
+            position:relative;z-index:1;
+        }
+        .q-card cite{font-size:13px;color:var(--text-muted);font-style:normal;font-weight:600;}
+        .quotes-disclaimer{
+            font-size:11px;color:var(--text-muted);margin-top:28px;
+            max-width:480px;margin-left:auto;margin-right:auto;line-height:1.5;
+        }
 
         /* ═════════════ WHY FAIL ═════════════ */
         .why-fail{background:var(--white);}
@@ -205,7 +227,8 @@
         @media(max-width:700px){
             .hero h1{font-size:36px;}.hero .tagline{font-size:16px;}
             .text-section h2,.practice-header h2,.plant-section h2,.testimonials-header h2,.cta-section h2,.problem h2{font-size:28px;}
-            .quotes blockquote{font-size:22px;}
+            .quotes-carousel{grid-template-columns:1fr;max-width:400px;}
+            .q-card blockquote{font-size:16px;}
             .t-grid{grid-template-columns:1fr;max-width:380px;}.t-card:nth-child(2){transform:none;}
             .contrast{grid-template-columns:1fr;}
             .persona-grid{grid-template-columns:1fr;}
@@ -279,9 +302,29 @@
 </section>
 
 <!-- ═══ 5. QUOTES ═══ -->
-<section class="quotes reveal">
-    <blockquote class="serif">"Gratitude turns what we have into enough."</blockquote>
-    <cite>&mdash; Aesop</cite>
+<section class="quotes-section">
+    <div class="quotes-header reveal">
+        <span class="label">Words to live by</span>
+    </div>
+    <div class="quotes-carousel">
+        <div class="q-card reveal d1">
+            <blockquote class="serif">"It's a scientific fact that gratitude reciprocates."</blockquote>
+            <cite>&mdash; Matthew McConaughey</cite>
+        </div>
+        <div class="q-card reveal d2">
+            <blockquote class="serif">"Be thankful for what you have; you'll end up having more."</blockquote>
+            <cite>&mdash; Oprah Winfrey</cite>
+        </div>
+        <div class="q-card reveal d3">
+            <blockquote class="serif">"When you are grateful, fear disappears and abundance appears."</blockquote>
+            <cite>&mdash; Tony Robbins</cite>
+        </div>
+        <div class="q-card reveal d4">
+            <blockquote class="serif">"Acknowledging the good that you already have in your life is the foundation for all abundance."</blockquote>
+            <cite>&mdash; Eckhart Tolle</cite>
+        </div>
+    </div>
+    <p class="quotes-disclaimer">These individuals are not affiliated with or endorsing Blossom Gratitude. Quotes are used for inspirational purposes only.</p>
 </section>
 
 <!-- ═══ 6. WHY PEOPLE FAIL ═══ -->
