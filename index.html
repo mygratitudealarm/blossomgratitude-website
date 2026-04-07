@@ -35,19 +35,11 @@
         .btn-ghost:hover{background:var(--green-light);box-shadow:none;transform:translateY(-1px);}
 
         /* Store badges */
-        .store-badges{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
-        .store-badge{
-            display:inline-flex;align-items:center;gap:11px;
-            background:#111;color:#fff;padding:13px 22px;border-radius:13px;
-            text-decoration:none;font-size:14px;font-weight:500;
-            transition:transform .2s,opacity .2s;cursor:not-allowed;opacity:.88;
-            border:1.5px solid rgba(255,255,255,.12);
-        }
-        .store-badge:hover{transform:translateY(-2px);opacity:1;}
-        .store-badge svg{flex-shrink:0;}
-        .store-badge .badge-text{display:flex;flex-direction:column;line-height:1.2;}
-        .store-badge .badge-sub{font-size:10px;font-weight:400;opacity:.7;text-transform:uppercase;letter-spacing:.8px;}
-        .store-badge .badge-name{font-size:16px;font-weight:700;}
+        .store-badges{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;align-items:center;}
+        .store-badge{display:inline-block;opacity:.7;cursor:not-allowed;transition:opacity .2s,transform .2s;}
+        .store-badge:hover{opacity:.85;transform:translateY(-2px);}
+        .store-badge img{height:52px;display:block;}
+        .store-badge img.gplay{height:76px;margin:-12px 0;}
         .store-coming{font-size:13px;color:var(--text-muted);margin-top:10px;}
 
         /* Scroll indicator */
