@@ -111,9 +111,10 @@
         /* ═════════════ SCIENCE ═════════════ */
         .science{background:var(--white);}
         .science-grid{
-            display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
-            max-width:620px;margin:32px auto 0;
+            display:flex;flex-wrap:wrap;gap:16px;
+            max-width:680px;margin:32px auto 0;justify-content:center;
         }
+        .science-item{flex:1 1 130px;max-width:160px;}
         .science-item{
             background:var(--warm);border-radius:16px;padding:22px 14px 18px;text-align:center;
         }
