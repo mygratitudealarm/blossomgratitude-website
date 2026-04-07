@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blossom Gratitude — 5 minutes a day to feel grateful</title>
+    <meta name="description" content="A gentle daily practice with AI-crafted videos, guided journaling, and meditation. 5 minutes every morning to transform how you feel.">
+    <meta name="theme-color" content="#5B8A6F">
+    <meta property="og:title" content="Blossom Gratitude — 5 minutes a day to feel grateful">
+    <meta property="og:description" content="A gentle daily practice with AI-crafted videos, guided journaling, and meditation.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://blossomgratitude.com">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green: #5B8A6F;
+            --green-light: #EDF5F0;
+            --green-glow: rgba(91, 138, 111, 0.15);
+            --warm: #F8F4EF;
+            --warm-dark: #F0EBE5;
+            --text: #2A2A2A;
+            --text-soft: #666666;
+            --text-muted: #999999;
+            --white: #FFFFFF;
+            --card-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--warm);
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .serif { font-family: 'DM Serif Display', Georgia, serif; }
+
+        /* ─── Animations ─── */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.15); opacity: 0.3; }
+        }
+        @keyframes growStem {
+            from { height: 0; }
+            to { height: 100%; }
+        }
+
+        .fade-up {
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards;
+        }
+        .fade-up-1 { animation-delay: 0.1s; }
+        .fade-up-2 { animation-delay: 0.25s; }
+        .fade-up-3 { animation-delay: 0.4s; }
+        .fade-up-4 { animation-delay: 0.55s; }
+
+        /* ─── Hero ─── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 24px 60px;
+            position: relative;
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--green-glow) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 4s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .hero-heart {
+            position: relative;
+            z-index: 1;
+            font-size: 80px;
+            animation: float 3s ease-in-out infinite;
+            margin-bottom: 32px;
+            filter: drop-shadow(0 4px 20px rgba(91, 138, 111, 0.2));
+        }
+
+        .hero h1 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 52px;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+            color: var(--text);
+            margin-bottom: 16px;
+            line-height: 1.1;
+            z-index: 1;
+        }
+
+        .hero .tagline {
+            font-size: 19px;
+            color: var(--text-soft);
+            max-width: 380px;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            z-index: 1;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--green);
+            color: var(--white);
+            padding: 18px 40px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 16px rgba(91, 138, 111, 0.3);
+            z-index: 1;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(91, 138, 111, 0.4);
+        }
+
+        .hero-platforms {
+            margin-top: 16px;
+            font-size: 13px;
+            color: var(--text-muted);
+            z-index: 1;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 32px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-muted);
+            font-size: 12px;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .scroll-hint svg {
+            opacity: 0.4;
+        }
+
+        /* ─── Section shared ─── */
+        section {
+            padding: 100px 24px;
+        }
+
+        .section-inner {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--green);
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 36px;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            color: var(--text);
+        }
+
+        .section-subtitle {
+            font-size: 17px;
+            color: var(--text-soft);
+            line-height: 1.65;
+            max-width: 520px;
+        }
+
+        /* ─── Intro quote ─── */
+        .intro {
+            background: var(--white);
+            text-align: center;
+        }
+
+        .intro-quote {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 28px;
+            font-weight: 400;
+            line-height: 1.4;
+            color: var(--text);
+            max-width: 540px;
+            margin: 0 auto 16px;
+        }
+
+        .intro-author {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* ─── Practice flow ─── */
+        .practice {
+            background: var(--warm);
+        }
+
+        .practice-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .flow {
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Vertical growing stem */
+        .flow::before {
+            content: '';
+            position: absolute;
+            left: 27px;
+            top: 28px;
+            bottom: 28px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--green), #C8BFAB);
+            border-radius: 1px;
+            opacity: 0.3;
+        }
+
+        .flow-step {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .flow-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .flow-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 18px;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 24px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            z-index: 1;
+        }
+
+        .flow-card {
+            flex: 1;
+            background: var(--white);
+            border-radius: 16px;
+            padding: 20px 22px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .flow-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+
+        .flow-card p {
+            font-size: 14px;
+            color: var(--text-soft);
+            line-height: 1.55;
+        }
+
+        .flow-card .demo-tag {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--green);
+            background: var(--green-light);
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+
+        /* ─── Features grid ─── */
+        .features {
+            background: var(--white);
+        }
+
+        .features-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--warm);
+            border-radius: 20px;
+            padding: 28px 24px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .feature-emoji {
+            font-size: 36px;
+            margin-bottom: 14px;
+        }
+
+        .feature-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--text-soft);
+            line-height: 1.55;
+        }
+
+        /* ─── Testimonials ─── */
+        .testimonials {
+            background: var(--warm);
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 28px 24px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .testimonial-stars {
+            color: #F5A623;
+            font-size: 14px;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-card blockquote {
+            font-size: 14px;
+            color: var(--text);
+            line-height: 1.6;
+            font-style: italic;
+            margin-bottom: 14px;
+        }
+
+        .testimonial-card cite {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-style: normal;
+            font-weight: 500;
+        }
+
+        /* ─── Plant section ─── */
+        .plant-section {
+            background: var(--white);
+            text-align: center;
+        }
+
+        .plant-visual {
+            margin: 40px auto 0;
+            width: 200px;
+            height: 220px;
+            position: relative;
+        }
+
+        .plant-pot {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 64px;
+        }
+
+        .plant-stem {
+            position: absolute;
+            bottom: 52px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 0;
+            background: linear-gradient(to top, #8B7355, var(--green));
+            border-radius: 2px;
+            animation: growStem 2s ease forwards 0.5s;
+        }
+
+        .plant-leaves {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 48px;
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards 2s;
+        }
+
+        /* ─── CTA final ─── */
+        .final-cta {
+            background: var(--warm);
+            text-align: center;
+            padding: 100px 24px 120px;
+        }
+
+        .final-cta .heart-big {
+            font-size: 56px;
+            margin-bottom: 24px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .final-cta h2 {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 36px;
+            font-weight: 400;
+            margin-bottom: 12px;
+        }
+
+        .final-cta p {
+            font-size: 17px;
+            color: var(--text-soft);
+            margin-bottom: 36px;
+            line-height: 1.6;
+        }
+
+        .final-cta .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--green);
+            color: var(--white);
+            padding: 18px 44px;
+            border-radius: 16px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 16px rgba(91, 138, 111, 0.3);
+        }
+
+        .final-cta .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(91, 138, 111, 0.4);
+        }
+
+        .final-cta .trial-note {
+            margin-top: 14px;
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* ─── Footer ─── */
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid var(--warm-dark);
+            background: var(--warm);
+        }
+
+        footer nav {
+            margin-bottom: 12px;
+        }
+
+        footer a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin: 0 16px;
+            font-size: 13px;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--green);
+        }
+
+        footer .copyright {
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 700px) {
+            .hero h1 { font-size: 38px; }
+            .hero .tagline { font-size: 17px; }
+            .section-title { font-size: 28px; }
+            .intro-quote { font-size: 22px; }
+            .feature-grid { grid-template-columns: 1fr; max-width: 360px; }
+            .testimonial-grid { grid-template-columns: 1fr; max-width: 360px; }
+            section { padding: 72px 20px; }
+            .final-cta h2 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-heart fade-up">🌸</div>
+    <h1 class="fade-up fade-up-1">Blossom</h1>
+    <p class="tagline fade-up fade-up-2">5 minutes a day to transform how you feel.</p>
+    <a href="#" class="hero-cta fade-up fade-up-3">Start your free trial</a>
+    <p class="hero-platforms fade-up fade-up-4">Available on iOS and Android</p>
+    <div class="scroll-hint">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 4v12m0 0l-4-4m4 4l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+</section>
+
+<!-- ═══ INTRO QUOTE ═══ -->
+<section class="intro">
+    <div class="section-inner">
+        <p class="intro-quote">"Gratitude is not just a feeling.<br>It's a practice that changes your brain, your body, and your life."</p>
+        <p class="intro-author">Rooted in positive psychology research</p>
+    </div>
+</section>
+
+<!-- ═══ YOUR DAILY PRACTICE ═══ -->
+<section class="practice">
+    <div class="practice-header">
+        <span class="section-label">Your daily practice</span>
+        <h2 class="section-title">4 gentle steps, every morning</h2>
+        <p class="section-subtitle" style="margin: 0 auto;">Simple but powerful. Each step is designed to help you not just think gratitude, but truly <em>feel</em> it.</p>
+    </div>
+    <div class="flow">
+        <div class="flow-step fade-up fade-up-1">
+            <div class="flow-icon">&#9654;&#65039;</div>
+            <div class="flow-card">
+                <h3>Watch</h3>
+                <p>A short gratitude video crafted just for today. Beautiful imagery, gentle narration, and calming music on a new topic every day.</p>
+                <span class="demo-tag">New video every morning</span>
+            </div>
+        </div>
+        <div class="flow-step fade-up fade-up-2">
+            <div class="flow-icon">&#128591;</div>
+            <div class="flow-card">
+                <h3>Reflect</h3>
+                <p>Speak or write what you're grateful for today. There's no wrong answer. Even the smallest things count.</p>
+                <span class="demo-tag">Voice or text</span>
+            </div>
+        </div>
+        <div class="flow-step fade-up fade-up-3">
+            <div class="flow-icon">&#127873;</div>
+            <div class="flow-card">
+                <h3>Receive</h3>
+                <p>Discover 5 hidden gifts in your everyday life. Small reminders of good that's already around you.</p>
+                <span class="demo-tag">5 curated gifts daily</span>
+            </div>
+        </div>
+        <div class="flow-step fade-up fade-up-4">
+            <div class="flow-icon">&#128156;</div>
+            <div class="flow-card">
+                <h3>Feel</h3>
+                <p>Close your eyes. A guided moment helps you move gratitude from your mind into your body. This is where the magic happens.</p>
+                <span class="demo-tag">Guided audio meditation</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ FEATURES ═══ -->
+<section class="features">
+    <div class="features-header">
+        <span class="section-label">Why Blossom</span>
+        <h2 class="section-title">Everything you need, nothing you don't</h2>
+    </div>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="feature-emoji">&#127909;</div>
+            <h3>AI-crafted daily videos</h3>
+            <p>Every video is unique. Over 600 gratitude topics, stunning visuals, and warm narration in 10 languages.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-emoji">&#128214;</div>
+            <h3>Your gratitude journal</h3>
+            <p>Look back on every entry you've ever written. See how far you've come. Your story of gratitude, always with you.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-emoji">&#127760;</div>
+            <h3>10 languages</h3>
+            <p>Practice in your own language. Dutch, English, German, French, Spanish, Italian, Portuguese, Polish, Swedish, and Turkish.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-emoji">&#9203;</div>
+            <h3>Just 5 minutes</h3>
+            <p>No hour-long sessions. No complicated setup. Open the app, follow 4 gentle steps, and carry the feeling with you all day.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ PLANT GROWS WITH YOU ═══ -->
+<section class="plant-section">
+    <div class="section-inner">
+        <span class="section-label">Your progress</span>
+        <h2 class="section-title">Your plant grows with you</h2>
+        <p class="section-subtitle" style="margin: 0 auto;">Complete your daily practice and watch your gratitude plant grow. Skip a day and it weakens, but it never dies. Just like you, it's always ready to grow again.</p>
+        <div class="plant-visual">
+            <div class="plant-leaves">&#127793;</div>
+            <div class="plant-stem"></div>
+            <div class="plant-pot">&#129717;</div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<section class="testimonials">
+    <div class="testimonials-header">
+        <span class="section-label">Stories</span>
+        <h2 class="section-title">How people feel after Blossom</h2>
+    </div>
+    <div class="testimonial-grid">
+        <div class="testimonial-card">
+            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <blockquote>"This app changed my mornings. I actually look forward to waking up now."</blockquote>
+            <cite>Sarah, 45 days in</cite>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <blockquote>"I didn't believe in gratitude journals. But this feels different. The videos make me actually stop and feel something."</blockquote>
+            <cite>Marcus, 3 weeks in</cite>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <blockquote>"My therapist recommended gratitude practices. This is the first app that actually made it stick."</blockquote>
+            <cite>Emma, 60 days in</cite>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ FINAL CTA ═══ -->
+<section class="final-cta">
+    <div class="heart-big">🌸</div>
+    <h2>Your first practice is waiting</h2>
+    <p>Start with a free 7-day trial. No credit card needed.<br>Just you, 5 minutes, and a little bit of gratitude.</p>
+    <a href="#" class="cta-btn">Begin your free trial</a>
+    <p class="trial-note">7 days free, then $2.99/month. Cancel anytime.</p>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+    <nav>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+        <a href="mailto:hello@blossomgratitude.com">Contact</a>
+    </nav>
+    <p class="copyright">&copy; 2026 Blossom Gratitude. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
