@@ -33,6 +33,28 @@
         .btn-ghost{background:transparent;color:var(--green);box-shadow:none;border:1.5px solid var(--green);padding:15px 32px;}
         .btn-ghost:hover{background:var(--green-light);box-shadow:none;transform:translateY(-1px);}
 
+        /* Store badges */
+        .store-badges{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;}
+        .store-badge{
+            display:inline-flex;align-items:center;gap:11px;
+            background:#111;color:#fff;padding:13px 22px;border-radius:13px;
+            text-decoration:none;font-size:14px;font-weight:500;
+            transition:transform .2s,opacity .2s;cursor:not-allowed;opacity:.88;
+            border:1.5px solid rgba(255,255,255,.12);
+        }
+        .store-badge:hover{transform:translateY(-2px);opacity:1;}
+        .store-badge svg{flex-shrink:0;}
+        .store-badge .badge-text{display:flex;flex-direction:column;line-height:1.2;}
+        .store-badge .badge-sub{font-size:10px;font-weight:400;opacity:.7;text-transform:uppercase;letter-spacing:.8px;}
+        .store-badge .badge-name{font-size:16px;font-weight:700;}
+        .store-coming{font-size:13px;color:var(--text-muted);margin-top:10px;}
+
+        /* Scroll indicator */
+        .scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;animation:bounce 2s infinite;}
+        .scroll-hint span{font-size:11px;color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;}
+        .scroll-hint svg{color:var(--text-muted);}
+        @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
+
         /* Shared text block */
         .text-section{padding:80px 24px;text-align:center;}
         .text-section .inner{max-width:560px;margin:0 auto;}
@@ -89,13 +111,17 @@
         .science{background:var(--white);}
         .science-grid{
             display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
-            max-width:560px;margin:32px auto 0;
+            max-width:620px;margin:32px auto 0;
         }
         .science-item{
-            background:var(--warm);border-radius:16px;padding:20px 16px;text-align:center;
+            background:var(--warm);border-radius:16px;padding:22px 14px 18px;text-align:center;
         }
-        .science-item .emoji{font-size:24px;margin-bottom:8px;}
-        .science-item p{font-size:13px;color:var(--text-soft);line-height:1.45;}
+        .science-item .stat{
+            font-family:'DM Serif Display',serif;font-size:32px;color:var(--green);
+            line-height:1;margin-bottom:8px;
+        }
+        .science-item p{font-size:13px;color:var(--text-soft);line-height:1.45;margin-bottom:8px;}
+        .science-item .source{font-size:10px;color:var(--text-muted);line-height:1.4;}
 
         /* ═════════════ QUOTES ═════════════ */
         .quotes-section{background:var(--warm);padding:80px 24px;text-align:center;}
@@ -245,24 +271,26 @@
     <div id="heroHeart"></div>
     <h1 class="serif">Train your mind<br>to feel happier</h1>
     <p class="tagline">Most people don't lack happiness.<br>They lack the ability to feel what's already there.</p>
-    <div class="buttons">
-        <a href="#" class="btn">Start your gratitude practice</a>
+    <div class="store-badges">
+        <a href="#" class="store-badge" onclick="return false;" title="Coming soon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <div class="badge-text">
+                <span class="badge-sub">Download on the</span>
+                <span class="badge-name">App Store</span>
+            </div>
+        </a>
+        <a href="#" class="store-badge" onclick="return false;" title="Coming soon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.22.98.15l.09-.05 10.3-10.3-2.93-2.93zm15.34-10.99c.43-.26.7-.7.7-1.21 0-.5-.26-.94-.69-1.2l-2.41-1.39-3.22 3.22 3.22 3.22zm-14.44 9.2 9.13-9.13-2.94-2.94-9.14 9.14 2.95 2.93zM3.09.28C2.73.1 2.33.13 2 .35L13.48 11.83l2.94-2.94z"/></svg>
+            <div class="badge-text">
+                <span class="badge-sub">Get it on</span>
+                <span class="badge-name">Google Play</span>
+            </div>
+        </a>
     </div>
-    <p class="sub">Free for 7 days &middot; No credit card &middot; iOS & Android</p>
-</section>
-
-<!-- ═══ 2. THE PROBLEM ═══ -->
-<section class="problem reveal">
-    <div class="inner">
-        <span class="label">The problem</span>
-        <h2 class="serif">We live fast.<br>We think a lot.<br>But we barely feel.</h2>
-        <ul class="problem-list">
-            <li>Constant stress and mental overload</li>
-            <li>Always thinking about the next thing</li>
-            <li>Achievements that somehow don't "land"</li>
-            <li>Gratitude understood &mdash; but never experienced</li>
-        </ul>
-        <p class="key">Gratitude isn't a thought. It's a feeling.<br>And most people have never trained that feeling.</p>
+    <p class="store-coming">Coming soon to iOS &amp; Android</p>
+    <div class="scroll-hint">
+        <span>Scroll</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
     </div>
 </section>
 
@@ -282,7 +310,7 @@
                 Actually feeling warmth, connection, emotion
             </div>
         </div>
-        <p class="highlight">The difference between understanding happiness and experiencing it.</p>
+        <p class="highlight">Gratitude isn't a thought. It's a feeling.<br>And most people have never trained that feeling.</p>
     </div>
 </section>
 
@@ -293,10 +321,26 @@
         <h2 class="serif">What science shows</h2>
         <p>Studies in positive psychology have shown that people who regularly practice gratitude report higher levels of well-being and life satisfaction.</p>
         <div class="science-grid">
-            <div class="science-item"><div class="emoji">&#128150;</div><p>More positive emotions</p></div>
-            <div class="science-item"><div class="emoji">&#128524;</div><p>Less stress and anxiety</p></div>
-            <div class="science-item"><div class="emoji">&#128164;</div><p>Better sleep quality</p></div>
-            <div class="science-item"><div class="emoji">&#129309;</div><p>Stronger relationships</p></div>
+            <div class="science-item">
+                <div class="stat">+25%</div>
+                <p>higher well-being after 10 weeks of gratitude journaling</p>
+                <span class="source">Emmons &amp; McCullough, 2003<br>Journal of Personality &amp; Social Psychology</span>
+            </div>
+            <div class="science-item">
+                <div class="stat">−8%</div>
+                <p>lower anxiety scores across 64 randomized clinical trials</p>
+                <span class="source">Cunha et al., 2023<br>Frontiers in Psychology</span>
+            </div>
+            <div class="science-item">
+                <div class="stat">4/4</div>
+                <p>sleep measures improved: quality, duration, latency, and daytime function</p>
+                <span class="source">Wood et al., 2009<br>Journal of Psychosomatic Research</span>
+            </div>
+            <div class="science-item">
+                <div class="stat">+6mo</div>
+                <p>gratitude expression predicts higher relationship satisfaction 6 months later</p>
+                <span class="source">Algoe, 2012<br>Social &amp; Personality Psychology Compass</span>
+            </div>
         </div>
     </div>
 </section>
@@ -471,10 +515,23 @@
     <div id="ctaHeart"></div>
     <h2 class="serif">Take 5 minutes.<br>Feel what you've been missing.</h2>
     <p>Your first practice is waiting. No credit card needed.</p>
-    <div class="buttons">
-        <a href="#" class="btn">Start your free trial</a>
+    <div class="store-badges">
+        <a href="#" class="store-badge" onclick="return false;" title="Coming soon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            <div class="badge-text">
+                <span class="badge-sub">Download on the</span>
+                <span class="badge-name">App Store</span>
+            </div>
+        </a>
+        <a href="#" class="store-badge" onclick="return false;" title="Coming soon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.64.22.98.15l.09-.05 10.3-10.3-2.93-2.93zm15.34-10.99c.43-.26.7-.7.7-1.21 0-.5-.26-.94-.69-1.2l-2.41-1.39-3.22 3.22 3.22 3.22zm-14.44 9.2 9.13-9.13-2.94-2.94-9.14 9.14 2.95 2.93zM3.09.28C2.73.1 2.33.13 2 .35L13.48 11.83l2.94-2.94z"/></svg>
+            <div class="badge-text">
+                <span class="badge-sub">Get it on</span>
+                <span class="badge-name">Google Play</span>
+            </div>
+        </a>
     </div>
-    <p class="note">7 days free, then $2.99/month. Cancel anytime.</p>
+    <p class="note">Coming soon &middot; 7 days free, then $2.99/month. Cancel anytime.</p>
 </section>
 
 <footer>
