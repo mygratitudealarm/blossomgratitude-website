@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blossom Gratitude — 5 minutes a day to feel grateful</title>
-    <meta name="description" content="A gentle daily practice with AI-crafted videos, guided journaling, and meditation. 5 minutes every morning to transform how you feel.">
+    <title>Blossom Gratitude — Train your mind to feel happier</title>
+    <meta name="description" content="Most people don't lack happiness. They lack the ability to feel what's already there. Blossom trains you to feel gratitude — in just 5 minutes a day.">
     <meta name="theme-color" content="#5B8A6F">
-    <meta property="og:title" content="Blossom Gratitude">
-    <meta property="og:description" content="5 minutes a day to transform how you feel.">
+    <meta property="og:title" content="Blossom Gratitude — Train your mind to feel happier">
+    <meta property="og:description" content="Most people don't lack happiness. They lack the ability to feel what's already there.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://blossomgratitude.com">
     <link rel="icon" href="app-icon.png" type="image/png">
@@ -16,19 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js" defer></script>
     <style>
-        :root {
-            --green: #5B8A6F;
-            --green-light: #EDF5F0;
-            --warm: #F8F4EF;
-            --warm-mid: #F0EBE5;
-            --text: #2A2A2A;
-            --text-soft: #5C5C5C;
-            --text-muted: #9A9A9A;
-            --white: #FFFFFF;
-            --shadow: 0 2px 12px rgba(0,0,0,0.05);
-            --shadow-lg: 0 8px 32px rgba(0,0,0,0.06);
-            --radius: 20px;
-        }
+        :root{--green:#5B8A6F;--green-light:#EDF5F0;--warm:#F8F4EF;--warm-mid:#F0EBE5;--text:#2A2A2A;--text-soft:#5C5C5C;--text-muted:#9A9A9A;--white:#FFFFFF;--shadow:0 2px 12px rgba(0,0,0,.05);--shadow-lg:0 8px 32px rgba(0,0,0,.06);--radius:20px;}
         *{margin:0;padding:0;box-sizing:border-box;}
         body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--warm);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
         img{display:block;max-width:100%;}
@@ -42,6 +30,19 @@
 
         .btn{display:inline-flex;align-items:center;background:var(--green);color:#fff;padding:17px 38px;border-radius:14px;text-decoration:none;font-size:16px;font-weight:600;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 20px rgba(91,138,111,.25);}
         .btn:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(91,138,111,.35);}
+        .btn-ghost{background:transparent;color:var(--green);box-shadow:none;border:1.5px solid var(--green);padding:15px 32px;}
+        .btn-ghost:hover{background:var(--green-light);box-shadow:none;transform:translateY(-1px);}
+
+        /* Shared text block */
+        .text-section{padding:80px 24px;text-align:center;}
+        .text-section .inner{max-width:560px;margin:0 auto;}
+        .text-section h2{font-size:36px;margin-bottom:16px;line-height:1.2;}
+        .text-section p{font-size:17px;color:var(--text-soft);line-height:1.7;margin-bottom:14px;}
+        .text-section p:last-child{margin-bottom:0;}
+        .text-section .highlight{
+            font-family:'DM Serif Display',serif;font-size:22px;color:var(--text);
+            line-height:1.45;font-style:italic;margin:24px 0;
+        }
 
         /* ═════════════ HERO ═════════════ */
         .hero{
@@ -49,117 +50,122 @@
             display:flex;flex-direction:column;align-items:center;justify-content:center;
             text-align:center;padding:48px 24px 56px;position:relative;
         }
-        .hero::before{
-            content:'';position:absolute;width:380px;height:380px;
-            background:radial-gradient(circle,rgba(91,138,111,.08) 0%,transparent 70%);
-            border-radius:50%;pointer-events:none;
-        }
-
-        #heroHeart{
-            width:160px;height:160px;margin-bottom:20px;position:relative;z-index:1;
-            filter:drop-shadow(0 8px 24px rgba(91,138,111,.15));
-        }
-
-        .hero h1{font-family:'DM Serif Display',serif;font-size:54px;letter-spacing:-.5px;margin-bottom:14px;line-height:1.08;}
-        .hero .tagline{font-size:18px;color:var(--text-soft);max-width:340px;line-height:1.65;margin-bottom:36px;}
+        .hero::before{content:'';position:absolute;width:400px;height:400px;background:radial-gradient(circle,rgba(91,138,111,.08) 0%,transparent 70%);border-radius:50%;pointer-events:none;}
+        #heroHeart{width:160px;height:160px;margin-bottom:20px;position:relative;z-index:1;filter:drop-shadow(0 8px 24px rgba(91,138,111,.15));}
+        .hero h1{font-family:'DM Serif Display',serif;font-size:48px;letter-spacing:-.5px;margin-bottom:18px;line-height:1.15;max-width:560px;}
+        .hero .tagline{font-size:18px;color:var(--text-soft);max-width:400px;line-height:1.65;margin-bottom:36px;}
         .hero .sub{font-size:13px;color:var(--text-muted);margin-top:14px;}
+        .hero .buttons{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;}
 
-        /* ═════════════ PROOF BAR ═════════════ */
-        .proof{
-            background:var(--white);padding:28px 24px;
-            display:flex;align-items:center;justify-content:center;gap:48px;flex-wrap:wrap;
-            border-bottom:1px solid var(--warm-mid);
+        /* ═════════════ PROBLEM ═════════════ */
+        .problem{background:var(--white);padding:80px 24px;text-align:center;}
+        .problem .inner{max-width:520px;margin:0 auto;}
+        .problem h2{font-size:36px;margin-bottom:24px;line-height:1.2;}
+        .problem-list{
+            list-style:none;display:flex;flex-direction:column;gap:12px;
+            margin:24px auto;max-width:360px;text-align:left;
         }
-        .proof-item{text-align:center;}
-        .proof-num{font-family:'DM Serif Display',serif;font-size:28px;color:var(--text);}
-        .proof-label{font-size:12px;color:var(--text-muted);margin-top:2px;font-weight:500;}
-
-        /* ═════════════ QUOTE ═════════════ */
-        .quote{background:var(--white);padding:72px 24px;text-align:center;position:relative;overflow:hidden;}
-        .quote::before{
-            content:'\201C';position:absolute;top:12px;left:50%;transform:translateX(-50%);
-            font-family:'DM Serif Display',serif;font-size:180px;color:var(--green-light);line-height:1;pointer-events:none;
+        .problem-list li{font-size:16px;color:var(--text-soft);line-height:1.5;padding-left:28px;position:relative;}
+        .problem-list li::before{content:'';position:absolute;left:0;top:8px;width:8px;height:8px;background:var(--warm-mid);border-radius:50%;}
+        .problem .key{
+            font-family:'DM Serif Display',serif;font-size:22px;color:var(--text);
+            line-height:1.5;margin-top:32px;max-width:460px;margin-left:auto;margin-right:auto;
         }
-        .quote blockquote{font-family:'DM Serif Display',serif;font-size:26px;line-height:1.5;max-width:500px;margin:0 auto 12px;position:relative;z-index:1;}
-        .quote cite{font-size:13px;color:var(--text-muted);font-style:normal;font-weight:500;}
 
-        /* ═════════════ PRACTICE (SCREENSHOTS) ═════════════ */
+        /* ═════════════ WHAT IS GRATITUDE ═════════════ */
+        .what-is{background:var(--warm);}
+        .contrast{
+            display:grid;grid-template-columns:1fr 1fr;gap:16px;
+            max-width:480px;margin:28px auto;text-align:left;
+        }
+        .contrast-card{padding:20px;border-radius:16px;font-size:15px;line-height:1.6;}
+        .contrast-card.wrong{background:var(--warm-mid);color:var(--text-soft);}
+        .contrast-card.right{background:var(--green-light);color:var(--text);}
+        .contrast-card .tag{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;display:block;margin-bottom:8px;}
+        .contrast-card.wrong .tag{color:var(--text-muted);}
+        .contrast-card.right .tag{color:var(--green);}
+
+        /* ═════════════ SCIENCE ═════════════ */
+        .science{background:var(--white);}
+        .science-grid{
+            display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+            max-width:560px;margin:32px auto 0;
+        }
+        .science-item{
+            background:var(--warm);border-radius:16px;padding:20px 16px;text-align:center;
+        }
+        .science-item .emoji{font-size:24px;margin-bottom:8px;}
+        .science-item p{font-size:13px;color:var(--text-soft);line-height:1.45;}
+
+        /* ═════════════ QUOTES ═════════════ */
+        .quotes{background:var(--warm);padding:72px 24px;text-align:center;position:relative;overflow:hidden;}
+        .quotes::before{content:'\201C';position:absolute;top:8px;left:50%;transform:translateX(-50%);font-family:'DM Serif Display',serif;font-size:200px;color:var(--green-light);line-height:1;pointer-events:none;}
+        .quotes blockquote{font-family:'DM Serif Display',serif;font-size:26px;line-height:1.5;max-width:500px;margin:0 auto 10px;position:relative;z-index:1;}
+        .quotes cite{font-size:14px;color:var(--text-muted);font-style:normal;font-weight:500;}
+
+        /* ═════════════ WHY FAIL ═════════════ */
+        .why-fail{background:var(--white);}
+        .fail-list{
+            list-style:none;display:flex;flex-direction:column;gap:14px;
+            margin:24px auto;max-width:400px;text-align:left;
+        }
+        .fail-list li{font-size:16px;color:var(--text-soft);line-height:1.5;padding-left:32px;position:relative;}
+        .fail-list li::before{content:'x';position:absolute;left:0;top:0;font-weight:700;color:var(--text-muted);font-size:14px;width:20px;height:20px;border-radius:50%;background:var(--warm-mid);display:flex;align-items:center;justify-content:center;line-height:20px;text-align:center;}
+
+        /* ═════════════ SOLUTION ═════════════ */
+        .solution{
+            background:linear-gradient(180deg,var(--warm) 0%,var(--green-light) 100%);
+        }
+
+        /* ═════════════ PRACTICE SCREENSHOTS ═════════════ */
         .practice{padding:100px 24px;background:var(--warm);}
         .practice-header{text-align:center;max-width:460px;margin:0 auto 64px;}
         .practice-header h2{font-size:36px;margin-bottom:14px;}
         .practice-header p{font-size:16px;color:var(--text-soft);line-height:1.65;}
-
-        .steps-grid{
-            display:grid;grid-template-columns:repeat(4,1fr);gap:20px;
-            max-width:960px;margin:0 auto;
-        }
-
-        .phone-frame{
-            position:relative;transition:transform .4s cubic-bezier(.23,1,.32,1);
-        }
+        .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:960px;margin:0 auto;}
+        .phone-frame{position:relative;transition:transform .4s cubic-bezier(.23,1,.32,1);}
         .phone-frame:hover{transform:translateY(-8px);}
+        .phone-bezel{background:#1a1a1a;border-radius:32px;padding:10px 8px;box-shadow:0 12px 40px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.06);overflow:hidden;}
+        .phone-bezel img{width:100%;border-radius:24px;display:block;}
+        .phone-label{text-align:center;margin-top:16px;}
+        .phone-label .step-num{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--green);display:block;margin-bottom:4px;}
+        .phone-label .step-name{font-size:16px;font-weight:700;color:var(--text);}
+        .phone-label p{font-size:13px;color:var(--text-soft);line-height:1.5;margin-top:6px;}
 
-        /* The phone bezel */
-        .phone-bezel{
-            background:#1a1a1a;border-radius:32px;padding:10px 8px;
-            box-shadow:0 12px 40px rgba(0,0,0,.12),0 2px 8px rgba(0,0,0,.06);
-            overflow:hidden;
-        }
+        /* ═════════════ RESULTS ═════════════ */
+        .results{background:var(--white);}
+        .timeline{max-width:480px;margin:32px auto 0;text-align:left;}
+        .timeline-item{padding:20px 0;border-bottom:1px solid var(--warm-mid);}
+        .timeline-item:last-child{border-bottom:none;}
+        .timeline-when{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--green);margin-bottom:6px;}
+        .timeline-what{font-size:16px;color:var(--text);line-height:1.6;}
 
-        .phone-bezel img{
-            width:100%;border-radius:24px;display:block;
+        /* ═════════════ FOR WHO ═════════════ */
+        .for-who{background:var(--warm);}
+        .persona-grid{
+            display:grid;grid-template-columns:repeat(2,1fr);gap:14px;
+            max-width:520px;margin:28px auto 0;
         }
-
-        .phone-label{
-            text-align:center;margin-top:16px;
-        }
-        .phone-label .step-num{
-            font-size:10px;font-weight:700;text-transform:uppercase;
-            letter-spacing:2px;color:var(--green);display:block;margin-bottom:4px;
-        }
-        .phone-label .step-name{
-            font-size:16px;font-weight:700;color:var(--text);
-        }
-        .phone-label p{
-            font-size:13px;color:var(--text-soft);line-height:1.5;margin-top:6px;
+        .persona{
+            background:var(--white);border-radius:16px;padding:20px;
+            font-size:15px;color:var(--text);line-height:1.5;
+            box-shadow:var(--shadow);
         }
 
         /* ═════════════ PLANT ═════════════ */
-        .plant-section{
-            background:linear-gradient(180deg,var(--warm) 0%,var(--green-light) 100%);
-            padding:100px 24px;text-align:center;
-        }
+        .plant-section{background:linear-gradient(180deg,var(--warm) 0%,var(--green-light) 100%);padding:100px 24px;text-align:center;}
         .plant-inner{max-width:460px;margin:0 auto;}
         .plant-section h2{font-size:36px;margin-bottom:14px;}
         .plant-section .desc{font-size:16px;color:var(--text-soft);line-height:1.65;margin-bottom:48px;}
-
-        /* SVG Plant */
-        .plant-svg{
-            width:220px;height:300px;margin:0 auto;
-            opacity:0;transition:opacity .6s ease;
-        }
+        .plant-svg{width:220px;height:300px;margin:0 auto;opacity:0;transition:opacity .6s ease;}
         .plant-svg.go{opacity:1;}
-
-        /* Animate paths */
-        .plant-svg .stem-path{
-            stroke-dasharray:200;stroke-dashoffset:200;
-            transition:stroke-dashoffset 2s cubic-bezier(.23,1,.32,1);
-        }
+        .plant-svg .stem-path{stroke-dasharray:200;stroke-dashoffset:200;transition:stroke-dashoffset 2s cubic-bezier(.23,1,.32,1);}
         .plant-svg.go .stem-path{stroke-dashoffset:0;}
-
-        .plant-svg .vine-l,.plant-svg .vine-r{
-            stroke-dasharray:300;stroke-dashoffset:300;
-            transition:stroke-dashoffset 2.5s cubic-bezier(.23,1,.32,1) .6s;
-        }
+        .plant-svg .vine-l,.plant-svg .vine-r{stroke-dasharray:300;stroke-dashoffset:300;transition:stroke-dashoffset 2.5s cubic-bezier(.23,1,.32,1) .6s;}
         .plant-svg.go .vine-l,.plant-svg.go .vine-r{stroke-dashoffset:0;}
-
-        .plant-svg .leaf{opacity:0;transform-origin:center;transition:opacity .5s ease,transform .6s cubic-bezier(.34,1.56,.64,1);}
+        .plant-svg .leaf{opacity:0;transform:scale(0);transform-origin:center;transition:opacity .5s ease,transform .6s cubic-bezier(.34,1.56,.64,1);}
         .plant-svg.go .leaf{opacity:1;transform:scale(1);}
-        .plant-svg .leaf{transform:scale(0);}
-        .plant-svg .l1{transition-delay:1.2s}.plant-svg .l2{transition-delay:1.4s}
-        .plant-svg .l3{transition-delay:1.6s}.plant-svg .l4{transition-delay:1.8s}
-        .plant-svg .l5{transition-delay:2s}.plant-svg .l6{transition-delay:2.2s}
-
+        .plant-svg .l1{transition-delay:1.2s}.plant-svg .l2{transition-delay:1.4s}.plant-svg .l3{transition-delay:1.6s}.plant-svg .l4{transition-delay:1.8s}.plant-svg .l5{transition-delay:2s}.plant-svg .l6{transition-delay:2.2s}
         .plant-svg .flower{opacity:0;transform:scale(0);transform-origin:center;transition:opacity .4s,transform .6s cubic-bezier(.34,1.56,.64,1);}
         .plant-svg.go .flower{opacity:1;transform:scale(1);}
         .plant-svg .f1{transition-delay:2.4s}.plant-svg .f2{transition-delay:2.7s}.plant-svg .f3{transition-delay:3s}
@@ -180,14 +186,12 @@
 
         /* ═════════════ FINAL CTA ═════════════ */
         .cta-section{background:var(--warm);text-align:center;padding:80px 24px 120px;position:relative;overflow:hidden;}
-        .cta-section::before{
-            content:'';position:absolute;bottom:-80px;left:50%;transform:translateX(-50%);
-            width:500px;height:300px;background:radial-gradient(ellipse,rgba(91,138,111,.06) 0%,transparent 70%);pointer-events:none;
-        }
+        .cta-section::before{content:'';position:absolute;bottom:-80px;left:50%;transform:translateX(-50%);width:500px;height:300px;background:radial-gradient(ellipse,rgba(91,138,111,.06) 0%,transparent 70%);pointer-events:none;}
         #ctaHeart{width:100px;height:100px;margin:0 auto 24px;filter:drop-shadow(0 4px 16px rgba(91,138,111,.12));}
         .cta-section h2{font-size:38px;margin-bottom:14px;}
         .cta-section>p{font-size:17px;color:var(--text-soft);line-height:1.65;max-width:380px;margin:0 auto 36px;}
         .cta-section .note{margin-top:14px;font-size:13px;color:var(--text-muted);}
+        .cta-section .buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
 
         /* ═════════════ FOOTER ═════════════ */
         footer{text-align:center;padding:32px 24px;border-top:1px solid var(--warm-mid);}
@@ -197,74 +201,172 @@
         footer .cp{font-size:11px;color:#ccc;}
 
         /* ═════════════ RESPONSIVE ═════════════ */
-        @media(max-width:800px){
-            .steps-grid{grid-template-columns:repeat(2,1fr);max-width:520px;}
-        }
+        @media(max-width:800px){.steps-grid{grid-template-columns:repeat(2,1fr);max-width:520px;}.science-grid{grid-template-columns:repeat(2,1fr);}}
         @media(max-width:700px){
-            .hero h1{font-size:40px;}
-            .hero .tagline{font-size:16px;}
-            .practice-header h2,.plant-section h2,.testimonials-header h2,.cta-section h2{font-size:28px;}
-            .quote blockquote{font-size:22px;}
-            .t-grid{grid-template-columns:1fr;max-width:380px;}
-            .t-card:nth-child(2){transform:none;}
-            .proof{gap:24px;padding:24px 20px;}
-            .proof-num{font-size:22px;}
+            .hero h1{font-size:36px;}.hero .tagline{font-size:16px;}
+            .text-section h2,.practice-header h2,.plant-section h2,.testimonials-header h2,.cta-section h2,.problem h2{font-size:28px;}
+            .quotes blockquote{font-size:22px;}
+            .t-grid{grid-template-columns:1fr;max-width:380px;}.t-card:nth-child(2){transform:none;}
+            .contrast{grid-template-columns:1fr;}
+            .persona-grid{grid-template-columns:1fr;}
             #heroHeart{width:130px;height:130px;}
+            .text-section,.problem,.quotes{padding:64px 20px;}
         }
-        @media(max-width:480px){
-            .steps-grid{grid-template-columns:repeat(2,1fr);max-width:400px;}
-            .hero h1{font-size:36px;}
-        }
+        @media(max-width:480px){.steps-grid{grid-template-columns:repeat(2,1fr);max-width:400px;}.hero h1{font-size:32px;}.science-grid{grid-template-columns:1fr 1fr;}}
     </style>
 </head>
 <body>
 
-<!-- ═══ HERO ═══ -->
+<!-- ═══ 1. HERO ═══ -->
 <section class="hero">
     <div id="heroHeart"></div>
-    <h1 class="serif">Blossom</h1>
-    <p class="tagline">A gentle daily practice to help you feel grateful. 5 minutes every morning.</p>
-    <a href="#" class="btn">Try free for 7 days</a>
-    <p class="sub">No credit card needed &middot; iOS & Android</p>
+    <h1 class="serif">Train your mind<br>to feel happier</h1>
+    <p class="tagline">Most people don't lack happiness.<br>They lack the ability to feel what's already there.</p>
+    <div class="buttons">
+        <a href="#" class="btn">Start your gratitude practice</a>
+    </div>
+    <p class="sub">Free for 7 days &middot; No credit card &middot; iOS & Android</p>
 </section>
 
-<!-- ═══ PROOF BAR ═══ -->
-<div class="proof reveal">
-    <div class="proof-item"><div class="proof-num serif">600+</div><div class="proof-label">Gratitude topics</div></div>
-    <div class="proof-item"><div class="proof-num serif">10</div><div class="proof-label">Languages</div></div>
-    <div class="proof-item"><div class="proof-num serif">5 min</div><div class="proof-label">Per day</div></div>
-    <div class="proof-item"><div class="proof-num serif">4</div><div class="proof-label">Guided steps</div></div>
-</div>
-
-<!-- ═══ QUOTE ═══ -->
-<section class="quote reveal">
-    <blockquote class="serif">"Gratitude is not just a feeling.<br>It's a practice that changes your brain, your body, and your life."</blockquote>
-    <cite>Rooted in positive psychology research</cite>
+<!-- ═══ 2. THE PROBLEM ═══ -->
+<section class="problem reveal">
+    <div class="inner">
+        <span class="label">The problem</span>
+        <h2 class="serif">We live fast.<br>We think a lot.<br>But we barely feel.</h2>
+        <ul class="problem-list">
+            <li>Constant stress and mental overload</li>
+            <li>Always thinking about the next thing</li>
+            <li>Achievements that somehow don't "land"</li>
+            <li>Gratitude understood &mdash; but never experienced</li>
+        </ul>
+        <p class="key">Gratitude isn't a thought. It's a feeling.<br>And most people have never trained that feeling.</p>
+    </div>
 </section>
 
-<!-- ═══ PRACTICE: REAL SCREENSHOTS ═══ -->
+<!-- ═══ 3. WHAT IS GRATITUDE ═══ -->
+<section class="text-section what-is reveal">
+    <div class="inner">
+        <span class="label">What is gratitude, really</span>
+        <h2 class="serif">The difference between knowing and feeling</h2>
+        <p>Gratitude is the ability to fully feel appreciation for something &mdash; in your body, not just in your mind.</p>
+        <div class="contrast">
+            <div class="contrast-card wrong">
+                <span class="tag">Thinking</span>
+                "I'm grateful for my family"
+            </div>
+            <div class="contrast-card right">
+                <span class="tag">Feeling</span>
+                Actually feeling warmth, connection, emotion
+            </div>
+        </div>
+        <p class="highlight">The difference between understanding happiness and experiencing it.</p>
+    </div>
+</section>
+
+<!-- ═══ 4. SCIENCE ═══ -->
+<section class="text-section science reveal">
+    <div class="inner">
+        <span class="label">The research</span>
+        <h2 class="serif">What science shows</h2>
+        <p>Studies in positive psychology have shown that people who regularly practice gratitude report higher levels of well-being and life satisfaction.</p>
+        <div class="science-grid">
+            <div class="science-item"><div class="emoji">&#128150;</div><p>More positive emotions</p></div>
+            <div class="science-item"><div class="emoji">&#128524;</div><p>Less stress and anxiety</p></div>
+            <div class="science-item"><div class="emoji">&#128164;</div><p>Better sleep quality</p></div>
+            <div class="science-item"><div class="emoji">&#129309;</div><p>Stronger relationships</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ 5. QUOTES ═══ -->
+<section class="quotes reveal">
+    <blockquote class="serif">"Gratitude turns what we have into enough."</blockquote>
+    <cite>&mdash; Aesop</cite>
+</section>
+
+<!-- ═══ 6. WHY PEOPLE FAIL ═══ -->
+<section class="text-section why-fail reveal">
+    <div class="inner">
+        <span class="label">The gap</span>
+        <h2 class="serif">If gratitude is so powerful&hellip;<br>why doesn't it work for most people?</h2>
+        <ul class="fail-list">
+            <li>It stays superficial &mdash; just writing lists</li>
+            <li>No emotional activation</li>
+            <li>No structure or guidance</li>
+            <li>No daily habit that sticks</li>
+        </ul>
+        <p class="highlight">Most gratitude practices stop at thinking.<br>Blossom trains you to feel.</p>
+    </div>
+</section>
+
+<!-- ═══ 7. YOUR SOLUTION ═══ -->
+<section class="text-section solution reveal">
+    <div class="inner">
+        <span class="label">The solution</span>
+        <h2 class="serif">Blossom is not a journaling app.<br>It's a guided emotional training.</h2>
+        <p>A daily practice with guided video, voice journaling, curated reflections, and meditation &mdash; designed to move gratitude from your head into your heart.</p>
+    </div>
+</section>
+
+<!-- ═══ 8. THE 4 STEPS ═══ -->
 <section class="practice">
     <div class="practice-header reveal">
         <span class="label">Your daily practice</span>
-        <h2 class="serif">4 gentle steps,<br>every morning</h2>
-        <p>Each step helps you not just <em>think</em> gratitude &mdash; but truly <em>feel</em> it.</p>
+        <h2 class="serif">4 guided steps,<br>every morning</h2>
+        <p>Each step takes you deeper &mdash; from watching to reflecting to feeling.</p>
     </div>
     <div class="steps-grid">
         <div class="phone-frame reveal d1">
-            <div class="phone-bezel"><img src="step-watch.png" alt="Step 1: Watch a gratitude video" loading="lazy"></div>
-            <div class="phone-label"><span class="step-num">Step 1</span><span class="step-name">Watch</span><p>A short video crafted just for today</p></div>
+            <div class="phone-bezel"><img src="step-watch.png" alt="Step 1: Watch" loading="lazy"></div>
+            <div class="phone-label"><span class="step-num">Step 1</span><span class="step-name">Arrive</span><p>Slow down your mind with a guided video</p></div>
         </div>
         <div class="phone-frame reveal d2">
-            <div class="phone-bezel"><img src="step-reflect.png" alt="Step 2: Reflect on what you're grateful for" loading="lazy"></div>
-            <div class="phone-label"><span class="step-num">Step 2</span><span class="step-name">Reflect</span><p>Speak or write your gratitude</p></div>
+            <div class="phone-bezel"><img src="step-reflect.png" alt="Step 2: Reflect" loading="lazy"></div>
+            <div class="phone-label"><span class="step-num">Step 2</span><span class="step-name">Focus</span><p>Bring attention to something specific</p></div>
         </div>
         <div class="phone-frame reveal d3">
-            <div class="phone-bezel"><img src="step-gifts.png" alt="Step 3: Receive daily gifts" loading="lazy"></div>
-            <div class="phone-label"><span class="step-num">Step 3</span><span class="step-name">Receive</span><p>Discover hidden gifts in your life</p></div>
+            <div class="phone-bezel"><img src="step-gifts.png" alt="Step 3: Receive" loading="lazy"></div>
+            <div class="phone-label"><span class="step-num">Step 3</span><span class="step-name">Amplify</span><p>Intensify the feeling with daily gifts</p></div>
         </div>
         <div class="phone-frame reveal d4">
-            <div class="phone-bezel"><img src="step-feel.png" alt="Step 4: Feel gratitude deeply" loading="lazy"></div>
-            <div class="phone-label"><span class="step-num">Step 4</span><span class="step-name">Feel</span><p>A guided moment to truly feel it</p></div>
+            <div class="phone-bezel"><img src="step-feel.png" alt="Step 4: Feel" loading="lazy"></div>
+            <div class="phone-label"><span class="step-num">Step 4</span><span class="step-name">Feel</span><p>Let it fully land in your body</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ 9. RESULTS ═══ -->
+<section class="text-section results reveal">
+    <div class="inner">
+        <span class="label">What to expect</span>
+        <h2 class="serif">It starts small.<br>Then it changes everything.</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-when">After a few days</div>
+                <div class="timeline-what">You start noticing small positive moments you used to overlook.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-when">After a few weeks</div>
+                <div class="timeline-what">You feel calmer, more present. The practice becomes something you look forward to.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-when">After longer use</div>
+                <div class="timeline-what">Your baseline mood shifts. You experience more appreciation in daily life &mdash; without trying.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══ 10. FOR WHO ═══ -->
+<section class="text-section for-who reveal">
+    <div class="inner">
+        <span class="label">Is this for you?</span>
+        <h2 class="serif">This is for people who want<br>to actually feel their life</h2>
+        <div class="persona-grid">
+            <div class="persona">People who feel constantly busy but never fulfilled</div>
+            <div class="persona">Overthinkers who live in their head</div>
+            <div class="persona">High performers who achieve but don't feel satisfied</div>
+            <div class="persona">Anyone who wants to feel more &mdash; not just do more</div>
         </div>
     </div>
 </section>
@@ -275,68 +377,23 @@
         <span class="label">Your progress</span>
         <h2 class="serif">Your plant grows with you</h2>
         <p class="desc">Complete your practice and watch your gratitude plant grow. Skip a day and it weakens &mdash; but it never dies. Just like you, it's always ready to bloom again.</p>
-
         <svg class="plant-svg" id="plantSvg" viewBox="0 0 220 300" fill="none">
-            <!-- Pot -->
             <rect x="72" y="252" width="76" height="8" rx="4" fill="#C9A97A"/>
             <path d="M78 260 L82 296 Q84 300 88 300 L132 300 Q136 300 138 296 L142 260 Z" fill="url(#potGrad)"/>
             <ellipse cx="110" cy="260" rx="32" ry="5" fill="#7A5F3A" opacity=".4"/>
-
-            <!-- Stem -->
-            <path class="stem-path" d="M110 255 C110 240, 108 200, 110 170 C112 140, 108 110, 110 80" stroke="#4D7D62" stroke-width="3.5" stroke-linecap="round"/>
-
-            <!-- Left vine -->
-            <path class="vine-l" d="M110 180 C100 175, 70 172, 50 160 C35 150, 30 130, 35 115" stroke="#4D7D62" stroke-width="2" stroke-linecap="round"/>
-
-            <!-- Right vine -->
-            <path class="vine-r" d="M110 150 C120 145, 150 142, 170 130 C185 120, 188 100, 183 85" stroke="#4D7D62" stroke-width="2" stroke-linecap="round"/>
-
-            <!-- Leaves -->
-            <g class="leaf l1" transform="translate(96,160) rotate(-30)">
-                <path d="M0 0 C-4-5,-6-12,-3-20 C-1-25,1-25,3-20 C6-12,4-5,0 0Z" fill="#5E9E72"/>
-                <path d="M0-1 L0-18" stroke="#3A6350" stroke-width=".7" opacity=".5"/>
-            </g>
-            <g class="leaf l2" transform="translate(124,140) rotate(25)">
-                <path d="M0 0 C-5-4,-8-10,-6-18 C-3-24,3-24,6-18 C8-10,5-4,0 0Z" fill="#7AB87A"/>
-                <path d="M0-1 L0-17" stroke="#4A7350" stroke-width=".7" opacity=".5"/>
-            </g>
-            <g class="leaf l3" transform="translate(90,120) rotate(-20)">
-                <path d="M0 0 C-3-5,-4-12,-2-22 C-.5-27,.5-27,2-22 C3-12,2-5,0 0Z" fill="#4A8860"/>
-                <path d="M0-1 L0-20" stroke="#2A5340" stroke-width=".7" opacity=".5"/>
-            </g>
-            <g class="leaf l4" transform="translate(128,105) rotate(35)">
-                <path d="M0 0 C-4-4,-6-10,-4-17 C-2-23,-1-26,0-25 C1-26,2-23,4-17 C6-10,4-4,0 0Z" fill="#6EAF85"/>
-            </g>
-            <g class="leaf l5" transform="translate(45,130) rotate(-45)">
-                <path d="M0 0 C-3-4,-5-10,-3-16 C-1-20,1-20,3-16 C5-10,3-4,0 0Z" fill="#5E9E72"/>
-            </g>
-            <g class="leaf l6" transform="translate(175,100) rotate(40)">
-                <path d="M0 0 C-4-4,-5-10,-3-16 C-1-20,1-20,3-16 C5-10,4-4,0 0Z" fill="#7AB87A"/>
-            </g>
-
-            <!-- Flowers -->
-            <g class="flower f1" transform="translate(35,108)">
-                <circle r="4" fill="#F5D070"/>
-                <g><path d="M0-1 C-3-5,-3-11,0-13 C3-11,3-5,0-1Z" fill="#F0C0CB"/><path d="M0-1 C-3-5,-3-11,0-13 C3-11,3-5,0-1Z" fill="#F0C0CB" transform="rotate(72)"/><path d="M0-1 C-3-5,-3-11,0-13 C3-11,3-5,0-1Z" fill="#F0C0CB" transform="rotate(144)"/><path d="M0-1 C-3-5,-3-11,0-13 C3-11,3-5,0-1Z" fill="#F0C0CB" transform="rotate(216)"/><path d="M0-1 C-3-5,-3-11,0-13 C3-11,3-5,0-1Z" fill="#F0C0CB" transform="rotate(288)"/></g>
-                <circle r="3.5" fill="#F5D070"/>
-            </g>
-            <g class="flower f2" transform="translate(183,78)">
-                <circle r="3.5" fill="#F0E080"/>
-                <g><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#D0A0E8"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#D0A0E8" transform="rotate(72)"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#D0A0E8" transform="rotate(144)"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#D0A0E8" transform="rotate(216)"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#D0A0E8" transform="rotate(288)"/></g>
-                <circle r="3" fill="#F0E080"/>
-            </g>
-            <g class="flower f3" transform="translate(110,72)">
-                <circle r="4" fill="#FF8030"/>
-                <g><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#FFE080"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#FFE080" transform="rotate(60)"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#FFE080" transform="rotate(120)"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#FFE080" transform="rotate(180)"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#FFE080" transform="rotate(240)"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#FFE080" transform="rotate(300)"/></g>
-                <circle r="3.5" fill="#FF8030"/>
-            </g>
-
-            <defs>
-                <linearGradient id="potGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#C9A97A"/>
-                    <stop offset="100%" stop-color="#A68C6A"/>
-                </linearGradient>
-            </defs>
+            <path class="stem-path" d="M110 255 C110 240,108 200,110 170 C112 140,108 110,110 80" stroke="#4D7D62" stroke-width="3.5" stroke-linecap="round"/>
+            <path class="vine-l" d="M110 180 C100 175,70 172,50 160 C35 150,30 130,35 115" stroke="#4D7D62" stroke-width="2" stroke-linecap="round"/>
+            <path class="vine-r" d="M110 150 C120 145,150 142,170 130 C185 120,188 100,183 85" stroke="#4D7D62" stroke-width="2" stroke-linecap="round"/>
+            <g class="leaf l1" transform="translate(96,160) rotate(-30)"><path d="M0 0 C-4-5,-6-12,-3-20 C-1-25,1-25,3-20 C6-12,4-5,0 0Z" fill="#5E9E72"/></g>
+            <g class="leaf l2" transform="translate(124,140) rotate(25)"><path d="M0 0 C-5-4,-8-10,-6-18 C-3-24,3-24,6-18 C8-10,5-4,0 0Z" fill="#7AB87A"/></g>
+            <g class="leaf l3" transform="translate(90,120) rotate(-20)"><path d="M0 0 C-3-5,-4-12,-2-22 C-.5-27,.5-27,2-22 C3-12,2-5,0 0Z" fill="#4A8860"/></g>
+            <g class="leaf l4" transform="translate(128,105) rotate(35)"><path d="M0 0 C-4-4,-6-10,-4-17 C-2-23,-1-26,0-25 C1-26,2-23,4-17 C6-10,4-4,0 0Z" fill="#6EAF85"/></g>
+            <g class="leaf l5" transform="translate(45,130) rotate(-45)"><path d="M0 0 C-3-4,-5-10,-3-16 C-1-20,1-20,3-16 C5-10,3-4,0 0Z" fill="#5E9E72"/></g>
+            <g class="leaf l6" transform="translate(175,100) rotate(40)"><path d="M0 0 C-4-4,-5-10,-3-16 C-1-20,1-20,3-16 C5-10,4-4,0 0Z" fill="#7AB87A"/></g>
+            <g class="flower f1" transform="translate(35,108)"><circle r="4" fill="#F5D070"/><g><path d="M0-1 C-3-5,-3-11,0-13 C3-11,3-5,0-1Z" fill="#F0C0CB"/><path d="M0-1 C-3-5,-3-11,0-13 C3-11,3-5,0-1Z" fill="#F0C0CB" transform="rotate(72)"/><path d="M0-1 C-3-5,-3-11,0-13 C3-11,3-5,0-1Z" fill="#F0C0CB" transform="rotate(144)"/><path d="M0-1 C-3-5,-3-11,0-13 C3-11,3-5,0-1Z" fill="#F0C0CB" transform="rotate(216)"/><path d="M0-1 C-3-5,-3-11,0-13 C3-11,3-5,0-1Z" fill="#F0C0CB" transform="rotate(288)"/></g><circle r="3.5" fill="#F5D070"/></g>
+            <g class="flower f2" transform="translate(183,78)"><circle r="3.5" fill="#F0E080"/><g><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#D0A0E8"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#D0A0E8" transform="rotate(72)"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#D0A0E8" transform="rotate(144)"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#D0A0E8" transform="rotate(216)"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#D0A0E8" transform="rotate(288)"/></g><circle r="3" fill="#F0E080"/></g>
+            <g class="flower f3" transform="translate(110,72)"><circle r="4" fill="#FF8030"/><g><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#FFE080"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#FFE080" transform="rotate(60)"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#FFE080" transform="rotate(120)"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#FFE080" transform="rotate(180)"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#FFE080" transform="rotate(240)"/><path d="M0-1 C-2.5-4,-3-9,0-11 C3-9,2.5-4,0-1Z" fill="#FFE080" transform="rotate(300)"/></g><circle r="3.5" fill="#FF8030"/></g>
+            <defs><linearGradient id="potGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#C9A97A"/><stop offset="100%" stop-color="#A68C6A"/></linearGradient></defs>
         </svg>
     </div>
 </section>
@@ -369,9 +426,11 @@
 <!-- ═══ FINAL CTA ═══ -->
 <section class="cta-section">
     <div id="ctaHeart"></div>
-    <h2 class="serif">Your first practice<br>is waiting</h2>
-    <p>Start with a free 7-day trial.<br>Just you, 5 minutes, and a little bit of gratitude.</p>
-    <a href="#" class="btn">Begin your free trial</a>
+    <h2 class="serif">Take 5 minutes.<br>Feel what you've been missing.</h2>
+    <p>Your first practice is waiting. No credit card needed.</p>
+    <div class="buttons">
+        <a href="#" class="btn">Start your free trial</a>
+    </div>
     <p class="note">7 days free, then $2.99/month. Cancel anytime.</p>
 </section>
 
@@ -385,38 +444,21 @@
 </footer>
 
 <script>
-// Lottie hearts
-document.addEventListener('DOMContentLoaded', function() {
-    if (typeof lottie !== 'undefined') {
-        lottie.loadAnimation({
-            container: document.getElementById('heroHeart'),
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: 'heart-beat.json'
-        });
-        lottie.loadAnimation({
-            container: document.getElementById('ctaHeart'),
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: 'heart-beat.json'
-        });
+document.addEventListener('DOMContentLoaded',function(){
+    if(typeof lottie!=='undefined'){
+        lottie.loadAnimation({container:document.getElementById('heroHeart'),renderer:'svg',loop:true,autoplay:true,path:'heart-beat.json'});
+        lottie.loadAnimation({container:document.getElementById('ctaHeart'),renderer:'svg',loop:true,autoplay:true,path:'heart-beat.json'});
     }
 });
-
-// Scroll reveal
-const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-        if (e.isIntersecting) {
+const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+        if(e.isIntersecting){
             e.target.classList.add('vis');
-            if (e.target.id === 'plantSection') {
-                document.getElementById('plantSvg').classList.add('go');
-            }
+            if(e.target.id==='plantSection')document.getElementById('plantSvg').classList.add('go');
         }
     });
-}, { threshold: 0.15 });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 
 </body>
